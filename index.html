@@ -8,61 +8,68 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --g:#1B8A5A;--gl:#E8F7F1;--gm:#A8DCC8;--gd:#0F5C3A;
-  --n:#1A2B3C;--nl:#EEF2F6;--nm:#B8C8D8;
-  --a:#E8A020;--al:#FEF5E7;
-  --s:#F7F9FB;
-  --text:#1A2B3C;--text2:#4A5568;--text3:#718096;
-  --border:#E2E8F0;
+  --g:#365ebf;--gl:#e8edf7;--gm:#8fa8d9;--gd:#1a2e5a;
+  --n:#1a2e5a;--nl:#e8edf7;--nm:#8fa8d9;
+  --a:#4a7ae0;--al:#e8edf7;
+  --ig:#0CA750;--igl:#e6f7ed;--igm:#80d4a0;--igd:#07753a;
+  --s:#f5f7fb;
+  --text:#1a2e5a;--text2:#4A5568;--text3:#718096;
+  --border:#dde3f0;
 }
-body{background:#F0F4F8;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);min-height:100vh;padding:2rem 1rem;}
-.page{max-width:940px;margin:0 auto;background:#fff;border-radius:16px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.08);}
+body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);min-height:100vh;padding:2rem 1rem;}
+.page{max-width:1020px;margin:0 auto;background:#fff;border-radius:16px;padding:2rem;box-shadow:0 1px 3px rgba(0,0,0,0.08);}
 .hero-row{display:flex;align-items:center;gap:14px;margin-bottom:1.5rem;}
-.hero-name{font-size:22px;font-weight:600;color:var(--text);margin:0 0 2px;}
-.hero-sub{font-size:13px;color:var(--text2);margin:0;}
+.hero-name{font-size:24px;font-weight:600;color:var(--text);margin:0 0 2px;}
+.hero-sub{font-size:15px;color:var(--text2);margin:0;}
 .section-banner{background:var(--n);border-radius:10px;padding:0.85rem 1.2rem;margin:1.75rem 0 1.25rem;display:flex;align-items:center;gap:14px;}
-.section-banner-title{font-size:14px;font-weight:600;color:#fff;}
-.sec-label{font-size:11px;font-weight:600;letter-spacing:0.08em;color:var(--g);text-transform:uppercase;margin:0 0 12px;display:flex;align-items:center;gap:8px;}
+.section-banner-title{font-size:16px;font-weight:600;color:#fff;}
+.sec-label{font-size:13px;font-weight:600;letter-spacing:0.08em;color:var(--ig);text-transform:uppercase;margin:0 0 12px;display:flex;align-items:center;gap:8px;}
 .sec-label::after{content:"";flex:1;height:1px;background:var(--nl);}
 .col3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1.5rem;}
 .stat{background:var(--s);border-radius:10px;padding:0.9rem 1rem;border:1px solid var(--nl);}
-.stat-v{font-size:24px;font-weight:600;color:var(--n);margin:4px 0 0;}
-.stat-l{font-size:11px;color:var(--text2);text-transform:uppercase;letter-spacing:0.04em;}
+.stat-v{font-size:26px;font-weight:600;color:var(--ig);margin:4px 0 0;}
+.stat-l{font-size:13px;color:var(--text2);text-transform:uppercase;letter-spacing:0.04em;}
 .card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:0.9rem 1rem;}
-.card-gl{border-left:3px solid var(--g);border-radius:0 10px 10px 0;}
+.card-gl{border-left:3px solid var(--ig);border-radius:0 10px 10px 0;}
 .card-nl{border-left:3px solid var(--n);border-radius:0 10px 10px 0;}
 .cards-col{display:flex;flex-direction:column;gap:8px;}
 .exp-row{display:flex;gap:12px;align-items:flex-start;padding:0.9rem 0;border-bottom:1px solid var(--nl);}
 .exp-row:last-child{border-bottom:none;}
 .logo-box{width:44px;height:44px;border-radius:8px;border:1px solid var(--nl);background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;padding:6px;}
 .logo-box img{width:100%;height:100%;object-fit:contain;}
-.exp-co{font-size:13px;font-weight:600;color:var(--text);margin:0 0 1px;}
-.exp-title{font-size:12px;color:var(--text2);margin:0 0 1px;}
-.exp-date{font-size:11px;color:var(--text3);margin:0 0 6px;}
-.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:99px;background:var(--gl);color:var(--gd);border:1px solid var(--gm);margin:2px 2px 0 0;}
+.exp-co{font-size:15px;font-weight:600;color:var(--text);margin:0 0 1px;}
+.exp-title{font-size:14px;color:var(--text2);margin:0 0 1px;}
+.exp-date{font-size:13px;color:var(--text3);margin:0 0 6px;}
+.tag{display:inline-block;font-size:13px;padding:2px 8px;border-radius:99px;background:var(--igl);color:var(--igd);border:1px solid var(--igm);margin:2px 2px 0 0;}
 .skills-row{display:flex;flex-wrap:wrap;gap:6px;}
-.skill{font-size:12px;padding:4px 10px;border-radius:99px;background:var(--nl);color:var(--n);border:1px solid var(--nm);}
-.h3{font-size:13px;font-weight:600;color:var(--text);margin:0 0 2px;}
+.skill{font-size:14px;padding:4px 10px;border-radius:99px;background:var(--nl);color:var(--n);border:1px solid var(--nm);}
+.h3{font-size:15px;font-weight:600;color:var(--text);margin:0 0 2px;}
 .owner{font-size:11px;color:var(--text3);margin:0 0 5px;}
-.body{font-size:12px;color:var(--text2);line-height:1.6;margin:0;}
-.match-bar{display:flex;align-items:flex-start;gap:12px;background:var(--gl);border:1px solid var(--gm);border-radius:10px;padding:1rem 1.2rem;margin-bottom:1.25rem;}
-.match-bar i{font-size:20px;color:var(--g);flex-shrink:0;margin-top:1px;}
-.match-text{font-size:13px;color:var(--gd);font-weight:500;}
+.body{font-size:14px;color:var(--text2);line-height:1.6;margin:0;}
+.match-bar{display:flex;align-items:flex-start;gap:12px;background:var(--igl);border:1px solid var(--igm);border-radius:10px;padding:1rem 1.2rem;margin-bottom:1.25rem;}
+.match-bar i{font-size:20px;color:var(--ig);flex-shrink:0;margin-top:1px;}
+.match-text{font-size:15px;color:var(--igd);font-weight:500;}
 .fit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:1.5rem;}
 .fit-card{border-radius:10px;padding:1rem 1.1rem;border:1px solid var(--border);background:#fff;}
 .fit-icon{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
 .fit-icon i{font-size:18px;}
-.fit-title{font-size:13px;font-weight:600;color:var(--text);margin:0 0 5px;}
-.fit-body{font-size:12px;color:var(--text2);line-height:1.6;margin:0 0 10px;}
-.badge{font-size:11px;font-weight:500;padding:3px 9px;border-radius:99px;display:inline-block;}
-.badge-g{background:var(--gl);color:var(--gd);}
+.fit-title{font-size:15px;font-weight:600;color:var(--text);margin:0 0 5px;}
+.fit.body{font-size:14px;color:var(--text2);line-height:1.6;margin:0 0 10px;}
+.badge{font-size:13px;font-weight:500;padding:3px 9px;border-radius:99px;display:inline-block;}
+.badge-g{background:var(--igl);color:var(--igd);}
 .badge-n{background:var(--nl);color:var(--n);}
-.badge-a{background:var(--al);color:#7A4F00;}
+.badge-a{background:var(--al);color:#365ebf;}
 .bucket-hdr{display:flex;align-items:center;gap:10px;margin-bottom:0.85rem;}
 .bucket-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.bucket-title{font-size:14px;font-weight:600;color:var(--text);margin:0;}
-.closing-plain{border-radius:10px;padding:1rem 1.25rem;margin-top:1rem;font-size:13px;color:var(--text2);line-height:1.7;border:1px solid var(--nl);background:var(--s);}
+.bucket-title{font-size:16px;font-weight:600;color:var(--text);margin:0;}
+.closing-plain{border-radius:10px;padding:1rem 1.25rem;margin-top:1rem;font-size:15px;color:var(--text2);line-height:1.7;border:1px solid var(--nl);background:var(--s);}
 .closing-plain strong{color:var(--n);font-weight:600;}
+.tab-nav{display:flex;gap:0;margin-bottom:1.5rem;border-bottom:2px solid var(--border);}
+.tab-btn{padding:10px 20px;font-size:15px;font-weight:600;color:var(--text3);background:none;border:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.2s;}
+.tab-btn:hover{color:var(--text);}
+.tab-btn.active{color:var(--ig);border-bottom-color:var(--ig);}
+.tab-content{display:none;}
+.tab-content.active{display:block;}
 </style>
 </head>
 <body>
@@ -75,11 +82,17 @@ body{background:#F0F4F8;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
     </div>
   </div>
 
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="switchTab('intro')">Self Intro</button>
+    <button class="tab-btn" onclick="switchTab('risk')">Risk Discovery & Prioritization</button>
+  </div>
+
+  <div id="tab-intro" class="tab-content active">
   <div class="section-banner">
     <div style="font-size:36px;line-height:1;flex-shrink:0;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.2));">📋</div>
     <div>
       <p class="section-banner-title">My Resume</p>
-      <p style="font-size:11px;color:var(--nm);margin:0;">10 years &middot; Big 4 to Fintech</p>
+      <p style="font-size:13px;color:var(--nm);margin:0;">10 years &middot; Big 4 to Fintech</p>
     </div>
   </div>
 
@@ -222,7 +235,7 @@ body{background:#F0F4F8;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
     <div style="font-size:36px;line-height:1;flex-shrink:0;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.2));">🎯</div>
     <div>
       <p class="section-banner-title">Why I Apply &amp; Why I Fit</p>
-      <p style="font-size:11px;color:var(--nm);margin:0;">Domain knowledge &middot; Soft skills &middot; Day-one ready</p>
+      <p style="font-size:13px;color:var(--nm);margin:0;">Domain knowledge &middot; Soft skills &middot; Day-one ready</p>
     </div>
   </div>
 
@@ -244,7 +257,7 @@ body{background:#F0F4F8;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
   <p class="sec-label" style="margin-top:1.5rem;">Why I'm applying</p>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:1rem;">
     <div>
-      <div class="bucket-hdr"><div style="width:36px;height:36px;border-radius:50%;background:var(--g);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="ti ti-briefcase" style="font-size:18px;color:white;"></i></div><div><p style="font-size:14px;font-weight:600;color:var(--text);margin:0;">Domain knowledge</p><p style="font-size:11px;color:var(--text2);margin:0;">Work I've done with the team</p></div></div>
+      <div class="bucket-hdr"><div style="width:36px;height:36px;border-radius:50%;background:var(--g);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="ti ti-briefcase" style="font-size:18px;color:white;"></i></div><div><p style="font-size:14px;font-weight:600;color:var(--text);margin:0;">Domain knowledge</p><p style="font-size:13px;color:var(--text2);margin:0;">Work I've done with the team</p></div></div>
       <div class="cards-col">
         <div class="card card-gl"><p class="h3"><i class="ti ti-robot" style="font-size:13px;vertical-align:-1px;margin-right:5px;color:var(--g);"></i>AI governance — Project Catapult</p><p class="owner">with Adam</p><p class="body">3LOD approval, monitoring controls, FRASA control framework — got Catapult through Internal Audit and SRCO.</p></div>
         <div class="card card-gl"><p class="h3"><i class="ti ti-shield-check" style="font-size:13px;vertical-align:-1px;margin-right:5px;color:var(--g);"></i>Controls &amp; audit — SOX revamp</p><p class="owner">with Shannon</p><p class="body">Assisted auditor management on testing evidence and deficiency communication; conducted first round of SOX control revamp. Done it from both sides — Deloitte auditor and Intuit control owner.</p></div>
@@ -254,7 +267,7 @@ body{background:#F0F4F8;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
       </div>
     </div>
     <div>
-      <div class="bucket-hdr"><div style="width:36px;height:36px;border-radius:50%;background:var(--n);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="ti ti-users" style="font-size:18px;color:white;"></i></div><div><p style="font-size:14px;font-weight:600;color:var(--text);margin:0;">Soft skills &amp; culture</p><p style="font-size:11px;color:var(--text2);margin:0;">Zero ramp-up · day-one contribution</p></div></div>
+      <div class="bucket-hdr"><div style="width:36px;height:36px;border-radius:50%;background:var(--n);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="ti ti-users" style="font-size:18px;color:white;"></i></div><div><p style="font-size:14px;font-weight:600;color:var(--text);margin:0;">Soft skills &amp; culture</p><p style="font-size:13px;color:var(--text2);margin:0;">Zero ramp-up · day-one contribution</p></div></div>
       <div class="cards-col">
         <div class="card card-nl"><p class="h3"><i class="ti ti-heart-handshake" style="font-size:13px;vertical-align:-1px;margin-right:5px;color:var(--n);"></i>Real relationships — not introductions</p><p class="owner">Adam &middot; Shannon &middot; Dan &middot; Emilie &middot; Zach</p><p class="body">1.5 years of substantive, high-stakes work. Know how each person thinks, what they prioritize, how to deliver under pressure.</p></div>
         <div class="card card-nl"><p class="h3"><i class="ti ti-git-branch" style="font-size:13px;vertical-align:-1px;margin-right:5px;color:var(--n);"></i>Cross-functional fluency</p><p class="owner">Risk Policy &middot; Risk Ops &middot; Compliance &middot; CAO &middot; SRCO</p><p class="body">Embedded in op mechs, initiative launches, and governance cycles. That trust takes time and can't be shortcut.</p></div>
@@ -273,62 +286,62 @@ body{background:#F0F4F8;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
     <div style="font-size:36px;line-height:1;flex-shrink:0;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.2));">🚀</div>
     <div>
       <p class="section-banner-title">Outlook &nbsp;&middot;&nbsp; 1 &middot; 3 &middot; 5 Year Plan</p>
-      <p style="font-size:11px;color:var(--nm);margin:0;">Foundation &middot; Scale &middot; Orchestration</p>
+      <p style="font-size:13px;color:var(--nm);margin:0;">Foundation &middot; Scale &middot; Orchestration</p>
     </div>
   </div>
 
   <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
 
     <!-- Year 1 -->
-    <div style="background:var(--gl);border-radius:14px;padding:1.1rem;border:1px solid var(--gm);">
+    <div style="background:var(--igl);border-radius:14px;padding:1.1rem;border:1px solid var(--igm);">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-        <div style="width:40px;height:40px;border-radius:50%;background:var(--g);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px;">🌱</div>
+        <div style="width:40px;height:40px;border-radius:50%;background:var(--ig);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px;">🌱</div>
         <div>
-          <p style="font-size:10px;font-weight:700;letter-spacing:0.08em;color:var(--gd);text-transform:uppercase;margin:0;">Year 1</p>
-          <p style="font-size:13px;font-weight:600;color:var(--gd);margin:0;">Stabilize &amp; deliver</p>
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.08em;color:var(--igd);text-transform:uppercase;margin:0;">Year 1</p>
+          <p style="font-size:15px;font-weight:600;color:var(--igd);margin:0;">Stabilize &amp; deliver</p>
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:8px;">
-        <div style="background:white;border-radius:8px;padding:10px 12px;border:1px solid var(--gm);">
-          <p style="font-size:11px;font-weight:700;color:var(--gd);margin:0 0 4px;"><i class="ti ti-list-check" style="margin-right:4px;"></i>Control inventory revamp</p>
-          <p style="font-size:11px;color:var(--text2);margin:0;line-height:1.5;">Combine redundant controls, deprecate outdated ones, and realign every control to 3LOD — CAO, Compliance, IA, and EA all in sync.</p>
+        <div style="background:white;border-radius:8px;padding:10px 12px;border:1px solid var(--igm);">
+          <p style="font-size:13px;font-weight:700;color:var(--igd);margin:0 0 4px;"><i class="ti ti-list-check" style="margin-right:4px;"></i>Control inventory revamp</p>
+          <p style="font-size:13px;color:var(--text2);margin:0;line-height:1.5;">Combine redundant controls, deprecate outdated ones, and realign every control to 3LOD — CAO, Compliance, IA, and EA all in sync.</p>
         </div>
-        <div style="background:white;border-radius:8px;padding:10px 12px;border:1px solid var(--gm);">
-          <p style="font-size:11px;font-weight:700;color:var(--gd);margin:0 0 4px;"><i class="ti ti-rocket" style="margin-right:4px;"></i>Catapult &amp; ROI Framework</p>
-          <p style="font-size:11px;color:var(--text2);margin:0;line-height:1.5;">Assist Phase 2 roadmap for both programs — SRCO alignment, QA framework maturity, and expanded queue coverage.</p>
+        <div style="background:white;border-radius:8px;padding:10px 12px;border:1px solid var(--igm);">
+          <p style="font-size:13px;font-weight:700;color:var(--igd);margin:0 0 4px;"><i class="ti ti-rocket" style="margin-right:4px;"></i>Catapult &amp; ROI Framework</p>
+          <p style="font-size:13px;color:var(--text2);margin:0;line-height:1.5;">Assist Phase 2 roadmap for both programs — SRCO alignment, QA framework maturity, and expanded queue coverage.</p>
         </div>
-        <div style="background:white;border-radius:8px;padding:10px 12px;border:1px solid var(--gm);">
-          <p style="font-size:11px;font-weight:700;color:var(--gd);margin:0 0 4px;"><i class="ti ti-building" style="margin-right:4px;"></i>Teleperformance expansion</p>
-          <p style="font-size:11px;color:var(--text2);margin:0;line-height:1.5;">Full risk assessments for money movement flows, controls documentation, and 3LOD sign-off with Dan and Emilie.</p>
+        <div style="background:white;border-radius:8px;padding:10px 12px;border:1px solid var(--igm);">
+          <p style="font-size:13px;font-weight:700;color:var(--igd);margin:0 0 4px;"><i class="ti ti-building" style="margin-right:4px;"></i>Teleperformance expansion</p>
+          <p style="font-size:13px;color:var(--text2);margin:0;line-height:1.5;">Full risk assessments for money movement flows, controls documentation, and 3LOD sign-off with Dan and Emilie.</p>
         </div>
       </div>
     </div>
 
     <!-- Year 3 -->
-    <div style="background:var(--al);border-radius:14px;padding:1.1rem;border:1px solid #F5D08A;">
+    <div style="background:var(--al);border-radius:14px;padding:1.1rem;border:1px solid #8fa8d9;">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
         <div style="width:40px;height:40px;border-radius:50%;background:var(--a);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px;">📈</div>
         <div>
-          <p style="font-size:10px;font-weight:700;letter-spacing:0.08em;color:#7A4F00;text-transform:uppercase;margin:0;">Year 3</p>
-          <p style="font-size:13px;font-weight:600;color:#7A4F00;margin:0;">Scale &amp; automate</p>
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.08em;color:#365ebf;text-transform:uppercase;margin:0;">Year 3</p>
+          <p style="font-size:15px;font-weight:600;color:#365ebf;margin:0;">Scale &amp; automate</p>
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:8px;">
-        <div style="background:white;border-radius:8px;padding:10px 12px;border:1px solid #F5D08A;">
-          <p style="font-size:11px;font-weight:700;color:#7A4F00;margin:0 0 4px;"><i class="ti ti-archive" style="margin-right:4px;"></i>Self-serve governance repository</p>
-          <p style="font-size:11px;color:var(--text2);margin:0;line-height:1.5;">Centralized launch toolkit covering risk assessments, exception emails, loss calculations, and audit support scripts — any analyst picks up a project without tribal knowledge.</p>
+        <div style="background:white;border-radius:8px;padding:10px 12px;border:1px solid #8fa8d9;">
+          <p style="font-size:13px;font-weight:700;color:#365ebf;margin:0 0 4px;"><i class="ti ti-archive" style="margin-right:4px;"></i>Self-serve governance repository</p>
+          <p style="font-size:13px;color:var(--text2);margin:0;line-height:1.5;">Centralized launch toolkit covering risk assessments, exception emails, loss calculations, and audit support scripts — any analyst picks up a project without tribal knowledge.</p>
         </div>
-        <div style="background:white;border-radius:8px;padding:10px 12px;border:1px solid #F5D08A;">
-          <p style="font-size:11px;font-weight:700;color:#7A4F00;margin:0 0 4px;"><i class="ti ti-chart-line" style="margin-right:4px;"></i>Large loss tracking mechanism</p>
-          <p style="font-size:11px;color:var(--text2);margin:0;line-height:1.5;">Full lifecycle tracking from identification to validated closure — escalation triggers, leadership reporting, and zero items aging past 90 days.</p>
+        <div style="background:white;border-radius:8px;padding:10px 12px;border:1px solid #8fa8d9;">
+          <p style="font-size:13px;font-weight:700;color:#365ebf;margin:0 0 4px;"><i class="ti ti-chart-line" style="margin-right:4px;"></i>Large loss tracking mechanism</p>
+          <p style="font-size:13px;color:var(--text2);margin:0;line-height:1.5;">Full lifecycle tracking from identification to validated closure — escalation triggers, leadership reporting, and zero items aging past 90 days.</p>
         </div>
-        <div style="background:white;border-radius:8px;padding:10px 12px;border:1px solid #F5D08A;">
-          <p style="font-size:11px;font-weight:700;color:#7A4F00;margin:0 0 4px;"><i class="ti ti-adjustments" style="margin-right:4px;"></i>Risk-based QA revamp</p>
-          <p style="font-size:11px;color:var(--text2);margin:0;line-height:1.5;">Tiered sampling framework — full manual for high-risk, spot-checks for medium, automated flags for low-risk. Same defensibility, significantly less manual workload.</p>
+        <div style="background:white;border-radius:8px;padding:10px 12px;border:1px solid #8fa8d9;">
+          <p style="font-size:13px;font-weight:700;color:#365ebf;margin:0 0 4px;"><i class="ti ti-adjustments" style="margin-right:4px;"></i>Risk-based QA revamp</p>
+          <p style="font-size:13px;color:var(--text2);margin:0;line-height:1.5;">Tiered sampling framework — full manual for high-risk, spot-checks for medium, automated flags for low-risk. Same defensibility, significantly less manual workload.</p>
         </div>
-        <div style="background:white;border-radius:8px;padding:10px 12px;border:1px solid #F5D08A;">
-          <p style="font-size:11px;font-weight:700;color:#7A4F00;margin:0 0 4px;"><i class="ti ti-cpu" style="margin-right:4px;"></i>AI expansion</p>
-          <p style="font-size:11px;color:var(--text2);margin:0;line-height:1.5;">Additional automation initiatives across new queues — each with full 3LOD sign-off, monitoring framework, and QA design built in from day one.</p>
+        <div style="background:white;border-radius:8px;padding:10px 12px;border:1px solid #8fa8d9;">
+          <p style="font-size:13px;font-weight:700;color:#365ebf;margin:0 0 4px;"><i class="ti ti-cpu" style="margin-right:4px;"></i>AI expansion</p>
+          <p style="font-size:13px;color:var(--text2);margin:0;line-height:1.5;">Additional automation initiatives across new queues — each with full 3LOD sign-off, monitoring framework, and QA design built in from day one.</p>
         </div>
       </div>
     </div>
@@ -338,28 +351,282 @@ body{background:#F0F4F8;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
         <div style="width:40px;height:40px;border-radius:50%;background:var(--n);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px;">🚀</div>
         <div>
-          <p style="font-size:10px;font-weight:700;letter-spacing:0.08em;color:var(--n);text-transform:uppercase;margin:0;">Year 5</p>
-          <p style="font-size:13px;font-weight:600;color:var(--n);margin:0;">Orchestrate</p>
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.08em;color:var(--n);text-transform:uppercase;margin:0;">Year 5</p>
+          <p style="font-size:15px;font-weight:600;color:var(--n);margin:0;">Orchestrate</p>
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:8px;">
         <div style="background:white;border-radius:8px;padding:10px 12px;border:1px solid var(--nm);">
-          <p style="font-size:11px;font-weight:700;color:var(--n);margin:0 0 4px;"><i class="ti ti-plane-departure" style="margin-right:4px;"></i>Teleperformance offboarding</p>
-          <p style="font-size:11px;color:var(--text2);margin:0;line-height:1.5;">Phased, risk-sequenced transition — routine workflows automated first, judgment-heavy last. Each handoff validated before the vendor dependency is retired.</p>
+          <p style="font-size:13px;font-weight:700;color:var(--n);margin:0 0 4px;"><i class="ti ti-plane-departure" style="margin-right:4px;"></i>Teleperformance offboarding</p>
+          <p style="font-size:13px;color:var(--text2);margin:0;line-height:1.5;">Phased, risk-sequenced transition — routine workflows automated first, judgment-heavy last. Each handoff validated before the vendor dependency is retired.</p>
         </div>
         <div style="background:white;border-radius:8px;padding:10px 12px;border:1px solid var(--nm);">
-          <p style="font-size:11px;font-weight:700;color:var(--n);margin:0 0 4px;"><i class="ti ti-robot" style="margin-right:4px;"></i>AI-orchestrated ops model</p>
-          <p style="font-size:11px;color:var(--text2);margin:0;line-height:1.5;">Each analyst owns an AI agent portfolio — Payments, Payroll, Capital, BillPay. Humans monitor, calibrate, and decide. Repetitive work belongs to the machines.</p>
+          <p style="font-size:13px;font-weight:700;color:var(--n);margin:0 0 4px;"><i class="ti ti-robot" style="margin-right:4px;"></i>AI-orchestrated ops model</p>
+          <p style="font-size:13px;color:var(--text2);margin:0;line-height:1.5;">Each analyst owns an AI agent portfolio — Payments, Payroll, Capital, BillPay. Humans monitor, calibrate, and decide. Repetitive work belongs to the machines.</p>
         </div>
         <div style="background:white;border-radius:8px;padding:10px 12px;border:1px solid var(--nm);">
-          <p style="font-size:11px;font-weight:700;color:var(--n);margin:0 0 4px;"><i class="ti ti-school" style="margin-right:4px;"></i>Risk Ops as first line</p>
-          <p style="font-size:11px;color:var(--text2);margin:0;line-height:1.5;">SOX &amp; compliance training delivered to the full team. Audit evidence automation in place. Risk Ops owns the first-line posture without needing governance as an intermediary.</p>
+          <p style="font-size:13px;font-weight:700;color:var(--n);margin:0 0 4px;"><i class="ti ti-school" style="margin-right:4px;"></i>Risk Ops as first line</p>
+          <p style="font-size:13px;color:var(--text2);margin:0;line-height:1.5;">SOX &amp; compliance training delivered to the full team. Audit evidence automation in place. Risk Ops owns the first-line posture without needing governance as an intermediary.</p>
         </div>
       </div>
     </div>
 
   </div>
 
+  </div><!-- end tab-intro -->
+
+  <div id="tab-risk" class="tab-content">
+    <style>
+      #tab-risk .rh-header{background:linear-gradient(135deg,#1a2e5a 0%,#365ebf 100%);color:#fff;border-radius:10px;padding:0.85rem 1.2rem;margin-bottom:1.25rem;display:flex;align-items:center;gap:14px;}
+      #tab-risk .rh-header h1{font-size:16px;font-weight:600;margin:0;}
+      #tab-risk .rh-header .rh-subtitle{font-size:13px;opacity:.85;font-weight:400;margin:0;}
+      #tab-risk .rh-obj{background:#fff;border-left:3px solid #365ebf;border-radius:0 10px 10px 0;padding:0.9rem 1rem;margin-bottom:1.25rem;}
+      #tab-risk .rh-obj h3{color:#365ebf;font-size:15px;margin-bottom:6px;}
+      #tab-risk .rh-obj p{color:#555;font-size:14px;line-height:1.6;}
+      #tab-risk .rh-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1.25rem;}
+      #tab-risk .rh-step{background:#fff;border-radius:10px;padding:0.9rem 1rem;border:1px solid var(--border);border-top:3px solid #365ebf;position:relative;}
+      #tab-risk .rh-step-num{background:#365ebf;color:#fff;padding:3px 9px;border-radius:99px;display:inline-flex;align-items:center;font-size:12px;font-weight:700;margin-bottom:8px;letter-spacing:.5px;}
+      #tab-risk .rh-step.h3{font-size:15px;color:#1a2e5a;margin-bottom:5px;}
+      #tab-risk .rh-step p{font-size:13px;color:#555;line-height:1.6;}
+      #tab-risk .rh-step .rh-arrow{position:absolute;right:-12px;top:50%;transform:translateY(-50%);font-size:16px;color:#365ebf;z-index:2;}
+      #tab-risk .rh-card{background:#fff;border-radius:10px;border:1px solid var(--border);margin-bottom:1.25rem;overflow:hidden;}
+      #tab-risk .rh-card-hdr{background:var(--n);color:#fff;padding:0.65rem 1rem;border-radius:10px 10px 0 0;font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;}
+      #tab-risk .rh-card-hdr .rh-badge{background:rgba(255,255,255,.2);padding:2px 8px;border-radius:99px;font-size:12px;font-weight:500;}
+      #tab-risk .rh-card-body{padding:0.9rem 1rem;}
+      #tab-risk .rh-heatmap-wrap{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;}
+      #tab-risk .rh-grid{display:grid;grid-template-columns:90px repeat(5,1fr);grid-template-rows:repeat(5,44px) 30px;gap:2px;flex:1;min-width:340px;}
+      #tab-risk .rh-grid .y-label{display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font-size:12px;font-weight:600;color:#1a2e5a;}
+      #tab-risk .rh-grid .x-label{display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#1a2e5a;text-align:center;padding:2px 3px;}
+      #tab-risk .rh-grid .cell{display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:#fff;border-radius:5px;transition:transform .15s,box-shadow .15s;cursor:default;}
+      #tab-risk .rh-grid .cell:hover{transform:scale(1.08);box-shadow:0 4px 12px rgba(0,0,0,.2);z-index:1;}
+      #tab-risk .cell.c-crit{background:#c00000;} #tab-risk .cell.c-high{background:#e86000;} #tab-risk .cell.c-med{background:#d4a800;color:#1a1a2e;} #tab-risk .cell.c-low{background:#5ba829;} #tab-risk .cell.c-min{background:#008a3e;}
+      #tab-risk .rh-score-tbl{min-width:220px;}
+      #tab-risk .rh-score-tbl h4{font-size:13px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ig);margin-bottom:8px;}
+      #tab-risk .rh-score-tbl table{width:100%;border-collapse:collapse;font-size:14px;}
+      #tab-risk .rh-score-tbl td,#tab-risk .rh-score-tbl th{padding:7px 10px;border-bottom:1px solid #dde3f0;}
+      #tab-risk .rh-score-tbl th{text-align:left;font-weight:600;color:#1a2e5a;background:#e8edf7;font-size:13px;}
+      #tab-risk .rh-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:middle;}
+      #tab-risk .rh-note{background:#e8edf7;border:1px solid #dde3f0;border-radius:8px;padding:0.7rem 1rem;margin-top:12px;font-size:14px;color:#555;line-height:1.6;}
+      #tab-risk .rh-note strong{color:#1a2e5a;}
+      #tab-risk .rh-axis-b{text-align:center;font-size:12px;font-weight:600;color:#1a2e5a;margin-top:3px;letter-spacing:1.5px;}
+      #tab-risk .rh-axis-s{writing-mode:vertical-rl;transform:rotate(180deg);font-size:12px;font-weight:600;color:#1a2e5a;letter-spacing:1.5px;padding-right:6px;}
+      #tab-risk .rh-imp-table{width:100%;border-collapse:collapse;font-size:13px;min-width:1000px;}
+      #tab-risk .rh-imp-table th{background:#1a2e5a;color:#fff;padding:7px 8px;text-align:center;font-weight:600;font-size:12px;position:sticky;top:0;}
+      #tab-risk .rh-imp-table th.cat{background:#365ebf;font-size:13px;}
+      #tab-risk .rh-imp-table td{padding:6px 8px;border:1px solid #dde3f0;vertical-align:top;line-height:1.5;}
+      #tab-risk .rh-imp-table .lc{font-weight:700;text-align:center;color:#fff;width:36px;}
+      #tab-risk .rh-imp-table .lb{font-weight:600;text-align:center;width:60px;}
+      #tab-risk .rh-imp-table .l5 .lc,#tab-risk .rh-imp-table .l5 .lb{background:#c00000;color:#fff;}
+      #tab-risk .rh-imp-table .l4 .lc,#tab-risk .rh-imp-table .l4 .lb{background:#e86000;color:#fff;}
+      #tab-risk .rh-imp-table .l3 .lc,#tab-risk .rh-imp-table .l3 .lb{background:#d4a800;color:#1a1a2e;}
+      #tab-risk .rh-imp-table .l2 .lc,#tab-risk .rh-imp-table .l2 .lb{background:#5ba829;color:#fff;}
+      #tab-risk .rh-imp-table .l1 .lc,#tab-risk .rh-imp-table .l1 .lb{background:#008a3e;color:#fff;}
+      #tab-risk .rh-lbadge{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;color:#fff;font-weight:700;font-size:12px;margin-right:6px;}
+      #tab-risk .rh-cm-table{width:100%;border-collapse:collapse;font-size:14px;}
+      #tab-risk .rh-cm-table th{background:#1a2e5a;color:#fff;padding:7px 10px;text-align:left;font-weight:600;font-size:13px;}
+      #tab-risk .rh-cm-table td{padding:8px 10px;border-bottom:1px solid #dde3f0;vertical-align:top;}
+      #tab-risk .rh-cm-table tr:nth-child(even) td{background:#e8edf7;}
+      #tab-risk .rh-action{display:flex;align-items:center;border-radius:8px;padding:10px 14px;gap:12px;margin-bottom:8px;}
+      #tab-risk .rh-action .tier{font-weight:700;font-size:15px;min-width:70px;}
+      #tab-risk .rh-action .range{font-size:13px;font-weight:600;min-width:60px;text-align:center;background:rgba(255,255,255,.3);padding:2px 8px;border-radius:99px;}
+      #tab-risk .rh-action .act{font-size:14px;flex:1;}
+      #tab-risk .rh-action.a-crit{background:#fce4e4;border-left:3px solid #c00000;} #tab-risk .rh-action.a-crit .tier{color:#c00000;}
+      #tab-risk .rh-action.a-high{background:#fff0e0;border-left:3px solid #e86000;} #tab-risk .rh-action.a-high .tier{color:#e86000;}
+      #tab-risk .rh-action.a-med{background:#fff8dc;border-left:3px solid #d4a800;} #tab-risk .rh-action.a-med .tier{color:#d4a800;}
+      #tab-risk .rh-action.a-low{background:#eaf5e0;border-left:3px solid #5ba829;} #tab-risk .rh-action.a-low .tier{color:#5ba829;}
+      #tab-risk .rh-action.a-min{background:#e0f5ea;border-left:3px solid #008a3e;} #tab-risk .rh-action.a-min .tier{color:#008a3e;}
+      #tab-risk .rh-gov{display:flex;gap:12px;flex-wrap:wrap;}
+      #tab-risk .rh-gov-card{flex:1;min-width:280px;background:#e8edf7;border-radius:10px;padding:0.9rem 1rem;border-left:3px solid #365ebf;}
+      #tab-risk .rh-gov-card h4{font-size:15px;color:#1a2e5a;margin-bottom:6px;}
+      #tab-risk .rh-gov-card p{font-size:14px;color:#555;line-height:1.6;}
+      #tab-risk .rh-scale-table{width:100%;border-collapse:collapse;font-size:14px;}
+      #tab-risk .rh-scale-table th{background:#1a2e5a;color:#fff;padding:10px 14px;text-align:left;font-size:13px;font-weight:600;}
+      #tab-risk .rh-scale-table td{padding:10px 14px;border-bottom:1px solid #dde3f0;vertical-align:top;}
+      #tab-risk .rh-scale-table tr:nth-child(even) td{background:#e8edf7;}
+      @media(max-width:768px){#tab-risk .rh-steps{grid-template-columns:1fr;} #tab-risk .rh-arrow{display:none;} #tab-risk .rh-heatmap-wrap{flex-direction:column;} #tab-risk .rh-gov{flex-direction:column;}}
+    </style>
+
+    <!-- Risk Discovery Header -->
+    <div class="rh-header">
+      <div style="font-size:28px;line-height:1;flex-shrink:0;">📊</div>
+      <div>
+        <h1>Risk Discovery &amp; Prioritization</h1>
+        <div class="rh-subtitle">A structured approach to identifying, assessing, and monitoring risk across the money movement portfolio</div>
+      </div>
+    </div>
+
+    <!-- Objective -->
+    <div class="rh-obj">
+      <h3>Objective</h3>
+      <p>This framework provides a standardized methodology for proactively identifying, categorizing, and ranking emerging operational risks across multiple business lines. It enables portfolio-level visibility for executive leadership by quantifying both inherent risk exposure and the mitigating effect of existing controls — resulting in a residual risk view that drives prioritized action. The scoring methodology uses objective, measurable criteria across five risk dimensions (Financial, Operational, Regulatory, Reputational, and Third-Party) to ensure consistency, transparency, and cross-functional alignment in risk reporting.</p>
+    </div>
+
+    <!-- 3 Steps -->
+    <div class="rh-steps">
+      <div class="rh-step"><div class="rh-step-num">Step 1</div><h3>Inherent Risk Assessment</h3><p>Score each risk on a 5×5 grid of <strong>Likelihood × Impact</strong> before any controls are applied. This produces an inherent risk score (1–25) representing the raw exposure if no mitigation existed.</p><span class="rh-arrow">➔</span></div>
+      <div class="rh-step"><div class="rh-step-num">Step 2</div><h3>Residual Risk Calculation</h3><p>Overlay a <strong>Control Maturity</strong> assessment (1=Optimized to 5=Initial) onto the inherent score. Residual Risk = Inherent Score × Control Maturity, revealing what risk remains after existing controls are applied.</p><span class="rh-arrow">➔</span></div>
+      <div class="rh-step"><div class="rh-step-num">Step 3</div><h3>Prioritized Action</h3><p>Map the final residual score to <strong>five action tiers</strong> (Critical → Minimal), each with a defined response: escalation cadence, ownership level, and review frequency — enabling executives to allocate resources where they matter most.</p></div>
+    </div>
+
+    <!-- Step 1: Inherent Risk -->
+    <div class="rh-card">
+      <div class="rh-card-hdr"><span>Step 1</span><span class="rh-badge">Inherent Risk Heat Map</span></div>
+      <div class="rh-card-body">
+        <div class="rh-heatmap-wrap">
+          <div style="flex:1;min-width:380px;">
+            <div style="display:flex;align-items:stretch;">
+              <div style="display:flex;align-items:center;justify-content:center;padding-right:4px;"><div class="rh-axis-s">I M P A C T</div></div>
+              <div style="flex:1;"><div class="rh-grid" id="rhInherentGrid"></div><div class="rh-axis-b">L I K E L I H O O D</div></div>
+            </div>
+          </div>
+          <div class="rh-score-tbl">
+            <h4>Risk Scoring</h4>
+            <table><tr><th>Rating</th><th>Score</th><th>Conversion</th></tr>
+            <tr><td><span class="rh-dot" style="background:#c00000"></span>Critical</td><td>21 – 25</td><td>5</td></tr>
+            <tr><td><span class="rh-dot" style="background:#e86000"></span>High</td><td>13 – 20</td><td>4</td></tr>
+            <tr><td><span class="rh-dot" style="background:#d4a800"></span>Medium</td><td>7 – 12</td><td>3</td></tr>
+            <tr><td><span class="rh-dot" style="background:#5ba829"></span>Low</td><td>3 – 6</td><td>2</td></tr>
+            <tr><td><span class="rh-dot" style="background:#008a3e"></span>Minimal</td><td>1 – 2</td><td>1</td></tr></table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Impact Scale -->
+    <div class="rh-card">
+      <div class="rh-card-hdr">Impact Scale — Detailed Criteria <span class="rh-badge">Assumption</span></div>
+      <div class="rh-card-body">
+        <div class="rh-note" style="margin-bottom:16px;margin-top:0;"><strong>Assumption:</strong> The thresholds below (e.g., financial loss ranges, case volume brackets, SLA windows, churn rate tiers) are illustrative and would need to be calibrated to the organization's actual risk appetite, historical data, and operational benchmarks before adoption.</div>
+        <div style="overflow-x:auto;">
+        <table class="rh-imp-table">
+          <thead><tr><th rowspan="2" style="width:44px">Level</th><th rowspan="2" style="width:70px">Rating</th><th colspan="2" class="cat">Financial</th><th colspan="4" class="cat">Operational</th><th colspan="2" class="cat">Reputational</th><th colspan="2" class="cat">Third-Party</th><th class="cat">Regulatory</th></tr>
+          <tr><th>% Revenue</th><th>Loss</th><th>SLA</th><th>Volume</th><th>Backlog</th><th>Call Wait</th><th>User Impact</th><th>News</th><th>Service</th><th>Labor</th><th>Compliance</th></tr></thead>
+          <tbody>
+            <tr class="l5"><td class="lc">5</td><td class="lb">Very High</td><td>&gt;10%</td><td>&gt;$5M</td><td>&lt;24h</td><td>&gt;200/day</td><td>&gt;1,000; bulk closure &gt;$400K/mo</td><td>&gt;4h</td><td>OOP escalation; Insult &gt;70%; Churn &gt;15%</td><td>National news</td><td>Single point of failure; halts decisioning</td><td>Fully dependent; unmonitored</td><td>Active enforcement; license at risk</td></tr>
+            <tr class="l4"><td class="lc">4</td><td class="lb">High</td><td>5–10%</td><td>$1M–$5M</td><td>24–48h</td><td>100–200</td><td>500–1,000; needs Policy help</td><td>2–4h</td><td>Insult 50%–70%; Churn 7%–15%</td><td>Social media</td><td>Critical; no alternative; past failures</td><td>Heavy reliance; inconsistent</td><td>WebBank/state laws; significant impact</td></tr>
+            <tr class="l3"><td class="lc">3</td><td class="lb">Moderate</td><td>2–5%</td><td>$400K–$1M</td><td>2–5 days</td><td>50–100</td><td>200–500; 1 week to resolve</td><td>1–2h</td><td>Insult 20%–50%; Churn 3%–7%</td><td>Industry news</td><td>Occasional outages/data issues</td><td>Moderate; coaching needed</td><td>Payroll/tax compliance; moderate impact</td></tr>
+            <tr class="l2"><td class="lc">2</td><td class="lb">Low</td><td>1–2%</td><td>$200K–$400K</td><td>5–30 days</td><td>10–50</td><td>&lt;200; 72h to resolve</td><td>&lt;1h</td><td>Insult ±20%; Churn 1%–3%</td><td>Internal boards</td><td>Reliable; SLA; alternative exists</td><td>Some outsourcing; strong QA</td><td>Internal policy-driven; low impact</td></tr>
+            <tr class="l1"><td class="lc">1</td><td class="lb">Very Low</td><td>&lt;1%</td><td>&lt;$200K</td><td>&gt;30 days</td><td>&lt;10</td><td>No backlog</td><td>No wait</td><td>Insult ±10%; Churn &lt;1%</td><td>Customer-specific</td><td>Low-criticality; easy to replace</td><td>In-house; full oversight</td><td>No external regulatory body</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+
+    <!-- Likelihood Scale -->
+    <div class="rh-card">
+      <div class="rh-card-hdr">Likelihood Scale <span class="rh-badge">Assumption</span></div>
+      <div class="rh-card-body">
+        <div class="rh-note" style="margin-bottom:16px;margin-top:0;"><strong>Assumption:</strong> The probability ranges, frequency intervals, and historical occurrence criteria below are illustrative and would need to be validated against the organization's actual incident data and risk tolerance before adoption.</div>
+        <table class="rh-scale-table"><thead><tr><th style="width:50px">Level</th><th style="width:140px">Rating</th><th>Probability</th><th>Frequency</th><th>History</th></tr></thead>
+        <tbody>
+          <tr><td><span class="rh-lbadge" style="background:#c00000">5</span></td><td><strong>Almost Certain</strong></td><td>≥95% chance</td><td>Once or more in 1 year</td><td>Occurs commonly</td></tr>
+          <tr><td><span class="rh-lbadge" style="background:#e86000">4</span></td><td><strong>Likely</strong></td><td>65% – 95%</td><td>Once in 1 year</td><td>Happens frequently</td></tr>
+          <tr><td><span class="rh-lbadge" style="background:#d4a800">3</span></td><td><strong>Possible</strong></td><td>35% – 65%</td><td>&lt;1 year, ≥3 years</td><td>Happens occasionally</td></tr>
+          <tr><td><span class="rh-lbadge" style="background:#5ba829">2</span></td><td><strong>Unlikely</strong></td><td>5% – 35%</td><td>&lt;3 years, ≥20 years</td><td>Happens rarely</td></tr>
+          <tr><td><span class="rh-lbadge" style="background:#008a3e">1</span></td><td><strong>Extremely Unlikely</strong></td><td>&lt;5%</td><td>&lt;once every 20 years</td><td>Has never occurred</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+
+    <!-- Step 2: Residual Risk -->
+    <div class="rh-card">
+      <div class="rh-card-hdr"><span>Step 2</span><span class="rh-badge">Residual Risk Heat Map</span></div>
+      <div class="rh-card-body">
+        <div style="display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap;">
+          <div style="flex:0 0 240px;">
+            <h4 style="font-size:15px;color:#1a2e5a;margin-bottom:8px;">How It Works</h4>
+            <p style="font-size:14px;color:#555;line-height:1.6;margin-bottom:8px;"><strong style="font-size:14px;color:#1a2e5a;">Residual Risk Score = Inherent Risk Score × Control Maturity Level</strong></p>
+            <p style="font-size:14px;color:#555;line-height:1.6;margin-bottom:8px;">A risk that is <strong>Critical (5)</strong> on an inherent basis but has <strong>Optimized (1)</strong> controls scores <strong>5</strong> — effectively <strong>Minimal</strong> residual risk.</p>
+            <p style="font-size:14px;color:#555;line-height:1.6;">Conversely, a <strong>High (4)</strong> inherent risk with <strong>Initial (5)</strong> controls scores <strong>20</strong> — <strong>High</strong> residual risk, requiring urgent investment in controls.</p>
+          </div>
+          <div style="flex:1;min-width:380px;">
+            <div style="display:flex;align-items:stretch;">
+              <div style="display:flex;align-items:center;justify-content:center;padding-right:4px;"><div class="rh-axis-s">I N H E R I T&thinsp; R I S K&ensp; S C O R E</div></div>
+              <div style="flex:1;"><div class="rh-grid" id="rhResidualGrid" style="grid-template-rows:repeat(5,44px) 30px;"></div><div class="rh-axis-b">C O N T R O L&ensp; M A T U R I T Y</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="rh-note" style="margin-top:24px;"><strong>Control Maturity</strong> considers the maturity and mitigating effectiveness of controls and other risk management processes as designed. Ratings should be validated with cross-functional stakeholders (Risk Policy, Operations, Compliance, Internal Audit) to ensure alignment.</div>
+      </div>
+    </div>
+
+    <!-- Control Maturity Scale -->
+    <div class="rh-card">
+      <div class="rh-card-hdr">Control Maturity Scale</div>
+      <div class="rh-card-body">
+        <table class="rh-cm-table"><thead><tr><th style="width:50px">Level</th><th style="width:120px">Rating</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><span class="rh-lbadge" style="background:#c00000">5</span></td><td><strong>Initial</strong></td><td>No formal controls exist. Responses are ad hoc and reactive. No documentation, no ownership, no consistency.</td></tr>
+          <tr><td><span class="rh-lbadge" style="background:#e86000">4</span></td><td><strong>Developing</strong></td><td>Controls exist but are inconsistent. SOPs may be partially written, monitoring occasional, heavily reliant on individuals.</td></tr>
+          <tr><td><span class="rh-lbadge" style="background:#d4a800">3</span></td><td><strong>Defined</strong></td><td>Controls formally documented and followed consistently. SOPs in place, roles clear — but limited measurement of effectiveness.</td></tr>
+          <tr><td><span class="rh-lbadge" style="background:#5ba829">2</span></td><td><strong>Managed</strong></td><td>Controls actively monitored with metrics and thresholds. Performance tracked, exceptions flagged, feedback loops in place.</td></tr>
+          <tr><td><span class="rh-lbadge" style="background:#008a3e">1</span></td><td><strong>Optimized</strong></td><td>Controls continuously improved. Automation leveraged, lessons learned feed back, control environment proactively adapts.</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+
+    <!-- Step 3: Conclusion -->
+    <div class="rh-card">
+      <div class="rh-card-hdr"><span>Step 3</span><span class="rh-badge">Conclusion — Final Risk Score &amp; Action Items</span></div>
+      <div class="rh-card-body">
+        <div class="rh-action a-crit"><div class="tier">Critical</div><div class="range">21 – 25</div><div class="act">Immediate escalation, executive action required</div></div>
+        <div class="rh-action a-high"><div class="tier">High</div><div class="range">13 – 20</div><div class="act">Urgent monitoring, senior leadership visibility</div></div>
+        <div class="rh-action a-med"><div class="tier">Medium</div><div class="range">7 – 12</div><div class="act">Active monitoring, team-level ownership and remediation plan</div></div>
+        <div class="rh-action a-low"><div class="tier">Low</div><div class="range">3 – 6</div><div class="act">Quarterly review, documented with assigned owner</div></div>
+        <div class="rh-action a-min"><div class="tier">Minimal</div><div class="range">1 – 2</div><div class="act">Logged in risk register, revisited annually</div></div>
+        <div class="rh-note"><strong>Note:</strong> The delta between inherent and residual risk tells an important story. A risk that scores Critical on an inherent basis but Low on a residual basis demonstrates that strong controls are working effectively. Conversely, a high inherent risk paired with a low control maturity rating signals that immediate investment in controls is needed.</div>
+      </div>
+    </div>
+
+    <!-- Governance Alignment -->
+    <div class="rh-card">
+      <div class="rh-card-hdr">Governance &amp; Strategic Alignment</div>
+      <div class="rh-card-body">
+        <div class="rh-gov">
+          <div class="rh-gov-card"><h4>Cross-Functional Alignment</h4><p>This risk prioritization framework must be developed and validated collaboratively across key stakeholder groups — including Risk Policy, Risk Operations, Risk Analytics, Compliance, Internal Audit, and the Chief Accounting Office (CAO).</p></div>
+          <div class="rh-gov-card"><h4>Company-Wide Strategy &amp; Direction</h4><p>Risk prioritization does not exist in isolation — it must be aligned with the company's broader strategic direction and business objectives. As the organization evolves (entering new markets, launching new products, scaling existing operations), the risk landscape shifts accordingly. This framework should be reviewed periodically to ensure that risk appetite thresholds, impact criteria, and monitoring priorities reflect current corporate strategy and executive leadership's direction for the business.</p></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end tab-risk -->
+
 </div>
+
+<script>
+function switchTab(tab) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  event.target.classList.add('active');
+}
+
+function rhTier(s) { return s>=21?'c-crit':s>=13?'c-high':s>=7?'c-med':s>=3?'c-low':'c-min'; }
+
+function rhBuildGrid(id, yLabels, xLabels, yVals, xVals) {
+  const g = document.getElementById(id);
+  for (let r=0;r<5;r++) {
+    const yl=document.createElement('div');yl.className='y-label';yl.textContent=yLabels[r];g.appendChild(yl);
+    for (let c=0;c<5;c++) {
+      const s=yVals[r]*xVals[c], cell=document.createElement('div');
+      cell.className='cell '+rhTier(s);cell.textContent=s;
+      cell.title=yLabels[r]+' × '+xLabels[c]+' = '+s;
+      g.appendChild(cell);
+    }
+  }
+  g.appendChild(document.createElement('div'));
+  for (let c=0;c<5;c++) {const xl=document.createElement('div');xl.className='x-label';xl.textContent=xLabels[c];g.appendChild(xl);}
+}
+
+rhBuildGrid('rhInherentGrid',
+  ['Very High (5)','High (4)','Moderate (3)','Low (2)','Very Low (1)'],
+  ['Extr. Unlikely (1)','Unlikely (2)','Possible (3)','Likely (4)','Almost Certain (5)'],
+  [5,4,3,2,1],[1,2,3,4,5]);
+
+rhBuildGrid('rhResidualGrid',
+  ['Very High (5)','High (4)','Moderate (3)','Low (2)','Very Low (1)'],
+  ['Optimized (1)','Managed (2)','Defined (3)','Developing (4)','Initial (5)'],
+  [5,4,3,2,1],[1,2,3,4,5]);
+</script>
 </body>
 </html>
