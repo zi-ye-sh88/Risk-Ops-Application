@@ -91,7 +91,7 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
   </div>
 
   <div id="tab-intro" class="tab-content active">
-  <div style="max-width:1020px;margin:0 auto;">
+  <div style="max-width:1400px;margin:0 auto;">
   <div class="section-banner">
     <div style="font-size:36px;line-height:1;flex-shrink:0;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.2));">📋</div>
     <div>
@@ -417,7 +417,9 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
       #tab-risk .rh-axis-s{writing-mode:vertical-rl;transform:rotate(180deg);font-size:12px;font-weight:600;color:#1a2e5a;letter-spacing:1.5px;padding-right:6px;}
       #tab-risk .rh-imp-table{width:100%;border-collapse:collapse;font-size:13px;}
       #tab-risk .rh-imp-table th{background:#1a2e5a;color:#fff;padding:7px 8px;text-align:center;font-weight:600;font-size:12px;position:sticky;top:0;}
-      #tab-risk .rh-imp-table th.cat{background:#365ebf;font-size:13px;}
+      #tab-risk .rh-imp-table th.cat{background:#365ebf;font-size:13px;border-bottom:2px solid #8fa8d9;}
+      #tab-risk .rh-imp-table th.grp-start{border-left:2px solid rgba(255,255,255,0.4);}
+      #tab-risk .rh-imp-table td.grp-start{border-left:2px solid #8fa8d9;}
       #tab-risk .rh-imp-table td{padding:6px 8px;border:1px solid #dde3f0;vertical-align:top;line-height:1.5;}
       #tab-risk .rh-imp-table .lc{font-weight:700;text-align:center;color:#fff;width:36px;}
       #tab-risk .rh-imp-table .lb{font-weight:600;text-align:center;width:60px;}
@@ -504,14 +506,14 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
         <div class="rh-note" style="margin-bottom:16px;margin-top:0;"><strong>Assumption:</strong> The thresholds below (e.g., financial loss ranges, case volume brackets, SLA windows, churn rate tiers) are illustrative and would need to be calibrated to the organization's actual risk appetite, historical data, and operational benchmarks before adoption.</div>
         <div style="overflow-x:auto;">
         <table class="rh-imp-table">
-          <thead><tr><th rowspan="2" style="width:44px">Level</th><th rowspan="2" style="width:70px">Rating</th><th colspan="2" class="cat">Financial</th><th colspan="4" class="cat">Operational</th><th colspan="2" class="cat">Reputational</th><th colspan="2" class="cat">Third-Party</th><th class="cat">Regulatory</th></tr>
-          <tr><th>% Revenue</th><th>Loss</th><th>SLA</th><th>Volume</th><th>Backlog</th><th>Call Wait</th><th>User Impact</th><th>News</th><th>Service</th><th>Labor</th><th>Compliance</th></tr></thead>
+          <thead><tr><th rowspan="2" style="width:44px">Level</th><th rowspan="2" style="width:70px">Rating</th><th colspan="2" class="cat">Financial</th><th colspan="4" class="cat grp-start">Operational</th><th colspan="2" class="cat grp-start">Reputational</th><th colspan="2" class="cat grp-start">Third-Party</th><th class="cat grp-start">Regulatory</th></tr>
+          <tr><th>% Revenue</th><th>Loss</th><th class="grp-start">SLA</th><th>Volume</th><th>Backlog</th><th>Call Wait</th><th class="grp-start">User Impact</th><th>News</th><th class="grp-start">Service</th><th>Labor</th><th class="grp-start">Compliance</th></tr></thead>
           <tbody>
-            <tr class="l5"><td class="lc">5</td><td class="lb">Very High</td><td>&gt;10%</td><td>&gt;$5M</td><td>&lt;24h</td><td>&gt;200/day</td><td>&gt;1,000; bulk closure &gt;$400K/mo</td><td>&gt;4h</td><td>OOP escalation; Insult &gt;70%; Churn &gt;15%</td><td>National news</td><td>Single point of failure; halts decisioning</td><td>Fully dependent; unmonitored</td><td>Active enforcement; license at risk</td></tr>
-            <tr class="l4"><td class="lc">4</td><td class="lb">High</td><td>5–10%</td><td>$1M–$5M</td><td>24–48h</td><td>100–200</td><td>500–1,000; needs Policy help</td><td>2–4h</td><td>Insult 50%–70%; Churn 7%–15%</td><td>Social media</td><td>Critical; no alternative; past failures</td><td>Heavy reliance; inconsistent</td><td>WebBank/state laws; significant impact</td></tr>
-            <tr class="l3"><td class="lc">3</td><td class="lb">Moderate</td><td>2–5%</td><td>$400K–$1M</td><td>2–5 days</td><td>50–100</td><td>200–500; 1 week to resolve</td><td>1–2h</td><td>Insult 20%–50%; Churn 3%–7%</td><td>Industry news</td><td>Occasional outages/data issues</td><td>Moderate; coaching needed</td><td>Payroll/tax compliance; moderate impact</td></tr>
-            <tr class="l2"><td class="lc">2</td><td class="lb">Low</td><td>1–2%</td><td>$200K–$400K</td><td>5–30 days</td><td>10–50</td><td>&lt;200; 72h to resolve</td><td>&lt;1h</td><td>Insult ±20%; Churn 1%–3%</td><td>Internal boards</td><td>Reliable; SLA; alternative exists</td><td>Some outsourcing; strong QA</td><td>Internal policy-driven; low impact</td></tr>
-            <tr class="l1"><td class="lc">1</td><td class="lb">Very Low</td><td>&lt;1%</td><td>&lt;$200K</td><td>&gt;30 days</td><td>&lt;10</td><td>No backlog</td><td>No wait</td><td>Insult ±10%; Churn &lt;1%</td><td>Customer-specific</td><td>Low-criticality; easy to replace</td><td>In-house; full oversight</td><td>No external regulatory body</td></tr>
+            <tr class="l5"><td class="lc">5</td><td class="lb">Very High</td><td>&gt;10%</td><td>&gt;$5M</td><td class="grp-start">&lt;24h</td><td>&gt;200/day</td><td>&gt;1,000; bulk closure &gt;$400K/mo</td><td>&gt;4h</td><td class="grp-start">OOP escalation; Insult &gt;70%; Churn &gt;15%</td><td>National news</td><td class="grp-start">Single point of failure; halts decisioning</td><td>Fully dependent; unmonitored</td><td class="grp-start">Active enforcement; license at risk</td></tr>
+            <tr class="l4"><td class="lc">4</td><td class="lb">High</td><td>5–10%</td><td>$1M–$5M</td><td class="grp-start">24–48h</td><td>100–200</td><td>500–1,000; needs Policy help</td><td>2–4h</td><td class="grp-start">Insult 50%–70%; Churn 7%–15%</td><td>Social media</td><td class="grp-start">Critical; no alternative; past failures</td><td>Heavy reliance; inconsistent</td><td class="grp-start">WebBank/state laws; significant impact</td></tr>
+            <tr class="l3"><td class="lc">3</td><td class="lb">Moderate</td><td>2–5%</td><td>$400K–$1M</td><td class="grp-start">2–5 days</td><td>50–100</td><td>200–500; 1 week to resolve</td><td>1–2h</td><td class="grp-start">Insult 20%–50%; Churn 3%–7%</td><td>Industry news</td><td class="grp-start">Occasional outages/data issues</td><td>Moderate; coaching needed</td><td class="grp-start">Payroll/tax compliance; moderate impact</td></tr>
+            <tr class="l2"><td class="lc">2</td><td class="lb">Low</td><td>1–2%</td><td>$200K–$400K</td><td class="grp-start">5–30 days</td><td>10–50</td><td>&lt;200; 72h to resolve</td><td>&lt;1h</td><td class="grp-start">Insult ±20%; Churn 1%–3%</td><td>Internal boards</td><td class="grp-start">Reliable; SLA; alternative exists</td><td>Some outsourcing; strong QA</td><td class="grp-start">Internal policy-driven; low impact</td></tr>
+            <tr class="l1"><td class="lc">1</td><td class="lb">Very Low</td><td>&lt;1%</td><td>&lt;$200K</td><td class="grp-start">&gt;30 days</td><td>&lt;10</td><td>No backlog</td><td>No wait</td><td class="grp-start">Insult ±10%; Churn &lt;1%</td><td>Customer-specific</td><td class="grp-start">Low-criticality; easy to replace</td><td>In-house; full oversight</td><td class="grp-start">No external regulatory body</td></tr>
           </tbody>
         </table></div>
       </div>
