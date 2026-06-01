@@ -65,10 +65,14 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
 .bucket-title{font-size:16px;font-weight:600;color:var(--text);margin:0;}
 .closing-plain{border-radius:10px;padding:1rem 1.25rem;margin-top:1rem;font-size:15px;color:var(--text2);line-height:1.7;border:1px solid var(--nl);background:var(--s);}
 .closing-plain strong{color:var(--n);font-weight:600;}
-.tab-nav{display:flex;gap:0;margin-bottom:1.5rem;border-bottom:2px solid var(--border);}
-.tab-btn{padding:10px 20px;font-size:15px;font-weight:600;color:var(--text3);background:none;border:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.2s;}
-.tab-btn:hover{color:var(--text);}
-.tab-btn.active{color:var(--ig);border-bottom-color:var(--ig);}
+.tab-nav{display:flex;gap:8px;margin-bottom:1.5rem;background:#F0F2F8;border-radius:14px;padding:6px;border:none;}
+.tab-btn{padding:10px 20px;font-size:14px;font-weight:600;color:var(--text3);background:none;border:none;cursor:pointer;border-radius:10px;transition:all 0.2s;display:flex;align-items:center;gap:7px;position:relative;white-space:nowrap;}
+.tab-btn:hover{color:var(--ig);background:rgba(255,255,255,0.7);}
+.tab-btn.active{color:var(--ig);background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.10);}
+.tab-btn .tab-dot{width:7px;height:7px;border-radius:50%;background:var(--border);display:inline-block;transition:all 0.2s;}
+.tab-btn.active .tab-dot{background:var(--ig);}
+.tab-btn:not(.active) .tab-dot{animation:pulse-dot 2s ease-in-out infinite;}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(0.8);}}
 .tab-content{display:none;}
 .tab-content.active{display:block;}
 </style>
@@ -85,9 +89,9 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
   </div>
 
   <div class="tab-nav">
-    <button class="tab-btn active" onclick="switchTab('intro')">Self Intro</button>
-    <button class="tab-btn" onclick="switchTab('risk')">Risk Discovery & Prioritization</button>
-    <button class="tab-btn" onclick="switchTab('dashboard')">Risk Ops QA Dashboard</button>
+    <button class="tab-btn active" onclick="switchTab('intro')"><span class="tab-dot"></span>👤 Self Intro</button>
+    <button class="tab-btn" onclick="switchTab('risk')"><span class="tab-dot"></span>🗺️ Risk Discovery & Prioritization</button>
+    <button class="tab-btn" onclick="switchTab('dashboard')"><span class="tab-dot"></span>📊 Risk Ops QA Dashboard</button>
   </div>
 
   <div id="tab-intro" class="tab-content active">
