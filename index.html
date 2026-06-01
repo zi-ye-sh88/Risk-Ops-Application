@@ -92,6 +92,7 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
     <button class="tab-btn active" onclick="switchTab('intro')"><span class="tab-dot"></span>👤 Self Intro</button>
     <button class="tab-btn" onclick="switchTab('risk')"><span class="tab-dot"></span>🗺️ Risk Discovery & Prioritization</button>
     <button class="tab-btn" onclick="switchTab('dashboard')"><span class="tab-dot"></span>📊 Risk Ops QA Dashboard</button>
+    <button class="tab-btn" onclick="switchTab('monitoring')"><span class="tab-dot"></span>📋 Monthly Monitoring & Governance</button>
   </div>
 
   <div id="tab-intro" class="tab-content active">
@@ -733,6 +734,374 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
   </div>
 
   </div><!-- end tab-dashboard -->
+  <div id="tab-monitoring" class="tab-content">
+<!-- TAB: Monthly Monitoring & Governance -->
+<style>
+/* ── Monitoring tab scoped styles ── */
+#tab-monitoring { padding: 4px 0; }
+
+/* Section wrapper */
+#tab-monitoring .mn-section { background: #fff; border-radius: 10px; border: 1px solid #DDE3F0; padding: 20px 22px; margin-bottom: 18px; }
+#tab-monitoring .mn-section-title { font-size: 13px; font-weight: 700; color: #1A2E5A; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #DDE3F0; padding-bottom: 10px; }
+#tab-monitoring .mn-section-title.blue-eyebrow { background: #1A2E5A; color: #fff; border-radius: 7px 7px 0 0; margin: -20px -22px 14px; padding: 11px 22px; border-bottom: none; }
+#tab-monitoring .mn-section-title.blue-eyebrow .mn-badge { background: rgba(255,255,255,0.2); color: #fff; }
+#tab-monitoring .mn-section-title .mn-badge { font-size: 10px; background: #E8EDF7; color: #365EBF; padding: 2px 9px; border-radius: 99px; font-weight: 600; }
+
+/* Header */
+#tab-monitoring .mn-header { background: linear-gradient(135deg, #1A2E5A, #365EBF); color: #fff; border-radius: 10px; padding: 18px 24px; margin-bottom: 18px; }
+#tab-monitoring .mn-header h2 { font-size: 17px; font-weight: 700; margin: 0 0 4px; }
+#tab-monitoring .mn-header p { font-size: 12px; opacity: 0.8; margin: 0; line-height: 1.6; }
+#tab-monitoring .mn-ex-tag { display: inline-block; background: rgba(255,255,255,0.18); border-radius: 20px; padding: 4px 14px; font-size: 11px; font-weight: 600; margin-top: 10px; }
+
+/* Process flow */
+#tab-monitoring .mn-flow { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; margin-bottom: 0; position: relative; }
+#tab-monitoring .mn-flow-stage { position: relative; }
+#tab-monitoring .mn-flow-hdr { padding: 11px 14px; font-size: 11px; font-weight: 700; color: #fff; border-radius: 8px 8px 0 0; display: flex; align-items: center; gap: 7px; }
+#tab-monitoring .mn-flow-body { background: #F5F7FB; border: 1px solid #DDE3F0; border-top: none; border-radius: 0 0 8px 8px; padding: 10px 12px; min-height: 220px; }
+#tab-monitoring .mn-flow-arrow { position: absolute; right: -14px; top: 14px; font-size: 20px; color: #365EBF; z-index: 10; line-height: 1; }
+#tab-monitoring .mn-flow-item { display: flex; gap: 7px; margin-bottom: 8px; font-size: 11px; line-height: 1.5; color: #4A5568; }
+#tab-monitoring .mn-flow-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+#tab-monitoring .mn-flow-item b { color: #1A2E5A; display: block; font-size: 11px; }
+
+/* Connector arrows between stages */
+#tab-monitoring .mn-flow-wrap { display: grid; grid-template-columns: 1fr 28px 1fr 28px 1fr 28px 1fr; gap: 0; align-items: start; margin-bottom: 0; }
+#tab-monitoring .mn-arrow-col { display: flex; align-items: center; justify-content: center; padding-top: 14px; font-size: 18px; color: #365EBF; }
+
+/* QA sheet embedded */
+#tab-monitoring .mn-sheet-wrap { border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; font-family: Arial, sans-serif; font-size: 12px; }
+#tab-monitoring .mn-sheet-chrome { background: #F8F9FA; border-bottom: 1px solid #e0e0e0; padding: 7px 14px; display: flex; align-items: center; gap: 10px; }
+#tab-monitoring .mn-sheet-icon { width: 22px; height: 22px; background: #0F9D58; border-radius: 3px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+#tab-monitoring .mn-sheet-name { font-size: 13px; font-weight: 600; color: #202124; }
+#tab-monitoring .mn-tab-bar { background: #F1F3F4; border-bottom: 1px solid #e0e0e0; display: flex; align-items: flex-end; padding: 0 6px; gap: 2px; overflow-x: auto; }
+#tab-monitoring .mn-tab { padding: 6px 14px; font-size: 10px; border-radius: 5px 5px 0 0; border: 1px solid transparent; border-bottom: none; background: none; color: #5f6368; white-space: nowrap; }
+#tab-monitoring .mn-tab.active { background: #fff; border-color: #e0e0e0; color: #0F9D58; font-weight: 700; }
+#tab-monitoring .mn-summary-strip { display: flex; gap: 8px; padding: 8px; background: #FAFAFA; border-bottom: 1px solid #e0e0e0; flex-wrap: wrap; }
+#tab-monitoring .mn-summary-box { background: #fff; border: 1px solid #e0e0e0; border-radius: 4px; padding: 8px 12px; min-width: 170px; }
+#tab-monitoring .mn-summary-box .sb-title { font-size: 10px; font-weight: 700; color: #1A2E5A; margin-bottom: 5px; border-bottom: 1px solid #DDE3F0; padding-bottom: 3px; }
+#tab-monitoring .mn-summary-box .sb-row { display: flex; justify-content: space-between; margin-bottom: 3px; font-size: 10px; }
+#tab-monitoring .mn-summary-box .sb-label { color: #5f6368; }
+#tab-monitoring .mn-summary-box .sb-val { font-weight: 700; }
+#tab-monitoring .sb-red { color: #C00000; }
+#tab-monitoring .sb-amber { color: #E86000; }
+#tab-monitoring .sb-green { color: #0CA750; }
+#tab-monitoring .mn-grid-wrap { overflow-x: auto; max-height: 300px; overflow-y: auto; }
+#tab-monitoring .mn-grid-wrap table { border-collapse: collapse; width: 100%; font-size: 10px; }
+#tab-monitoring .mn-grid-wrap .rn { background: #F8F9FA; border-right: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0; width: 28px; text-align: center; color: #80868b; font-size: 9px; padding: 2px 3px; }
+#tab-monitoring .mn-grid-wrap .ch { background: #F8F9FA; border-right: 1px solid #e0e0e0; border-bottom: 2px solid #0F9D58; text-align: center; color: #80868b; font-size: 9px; padding: 2px 4px; white-space: nowrap; }
+#tab-monitoring .mn-grid-wrap td.hdr2 { background: #1A2E5A; color: #fff; font-weight: 700; font-size: 9px; text-align: center; padding: 4px 6px; white-space: nowrap; border-right: 1px solid #2a3e6a; }
+#tab-monitoring .mn-grid-wrap td { border-right: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0; padding: 3px 6px; white-space: nowrap; font-size: 10px; }
+#tab-monitoring .mn-grid-wrap tr:nth-child(even) td { background: #F8F9FA; }
+#tab-monitoring .gb { display: inline-block; padding: 1px 7px; border-radius: 99px; font-size: 9px; font-weight: 700; color: #fff; }
+#tab-monitoring .gb.y { background: #0CA750; }
+#tab-monitoring .gb.n { background: #C00000; }
+#tab-monitoring .mn-grid-wrap .sect-row td { background: #FFF8E1; font-weight: 700; font-size: 9px; color: #5D4037; }
+#tab-monitoring .mn-grid-wrap .total-row td { background: #E8F5E9; font-weight: 700; font-size: 9px; color: #1A2E5A; }
+
+/* Memo embedded */
+#tab-monitoring .mn-memo-wrap { border: 1px solid #DDE3F0; border-radius: 8px; overflow: hidden; background: #e8e8e8; padding: 16px; }
+#tab-monitoring .mn-memo-page { background: #fff; max-width: 100%; padding: 28px 32px; box-shadow: 0 2px 12px rgba(0,0,0,0.10); border-radius: 2px; font-family: Arial, sans-serif; font-size: 11px; }
+#tab-monitoring .mn-memo-lh { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #1A2E5A; }
+#tab-monitoring .mn-memo-lh-brand { font-size: 15px; font-weight: 700; color: #1A2E5A; }
+#tab-monitoring .mn-memo-lh-sub { font-size: 10px; color: #666; margin-top: 2px; }
+#tab-monitoring .mn-memo-lh-badge { background: #1A2E5A; color: #fff; padding: 4px 10px; border-radius: 3px; font-size: 10px; font-weight: 700; }
+#tab-monitoring .mn-memo-hdr { background: #F5F7FB; border: 1px solid #DDE3F0; border-left: 3px solid #1A2E5A; border-radius: 0 5px 5px 0; padding: 10px 14px; margin-bottom: 14px; font-size: 10px; }
+#tab-monitoring .mn-memo-hdr table { width: 100%; border-collapse: collapse; }
+#tab-monitoring .mn-memo-hdr td { padding: 2px 6px; vertical-align: top; }
+#tab-monitoring .mn-memo-hdr .lbl { font-weight: 700; color: #1A2E5A; width: 55px; font-size: 10px; }
+#tab-monitoring .mn-memo-kpi-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 7px; margin-bottom: 12px; }
+#tab-monitoring .mn-kpi { border-radius: 5px; padding: 8px 10px; border: 1px solid #DDE3F0; border-top: 3px solid #DDE3F0; }
+#tab-monitoring .mn-kpi.red { border-top-color: #C00000; }
+#tab-monitoring .mn-kpi.amber { border-top-color: #E86000; }
+#tab-monitoring .mn-kpi .kl { font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; color: #666; margin-bottom: 2px; }
+#tab-monitoring .mn-kpi .kv { font-size: 17px; font-weight: 700; }
+#tab-monitoring .mn-kpi.red .kv { color: #C00000; }
+#tab-monitoring .mn-kpi.amber .kv { color: #E86000; }
+#tab-monitoring .mn-kpi .kt { font-size: 9px; color: #888; margin-top: 1px; }
+#tab-monitoring .memo-h2 { font-size: 10px; font-weight: 700; color: #1A2E5A; text-transform: uppercase; letter-spacing: 0.6px; margin: 14px 0 6px; padding-bottom: 3px; border-bottom: 1px solid #DDE3F0; }
+#tab-monitoring .memo-p { font-size: 10px; line-height: 1.6; color: #333; margin-bottom: 6px; }
+#tab-monitoring .memo-ul { margin: 4px 0 8px 16px; }
+#tab-monitoring .memo-ul li { font-size: 10px; line-height: 1.6; color: #333; margin-bottom: 2px; }
+#tab-monitoring .memo-esc { background: #FFF3F3; border: 1px solid #FFCCCC; border-radius: 5px; padding: 8px 12px; margin-bottom: 10px; font-size: 10px; color: #5D0000; }
+#tab-monitoring .memo-esc-title { font-size: 10px; font-weight: 700; color: #C00000; margin-bottom: 3px; }
+#tab-monitoring .memo-action-table { width: 100%; border-collapse: collapse; font-size: 9.5px; margin-bottom: 10px; }
+#tab-monitoring .memo-action-table th { background: #1A2E5A; color: #fff; padding: 5px 8px; text-align: left; font-weight: 600; }
+#tab-monitoring .memo-action-table td { padding: 5px 8px; border-bottom: 1px solid #DDE3F0; }
+#tab-monitoring .memo-action-table tr:nth-child(even) td { background: #F5F7FB; }
+#tab-monitoring .mpill { display: inline-block; padding: 1px 7px; border-radius: 99px; font-size: 9px; font-weight: 700; color: #fff; }
+#tab-monitoring .mpill.open { background: #C00000; }
+#tab-monitoring .memo-cf { background: #FFF8E1; border: 1px solid #FFE082; border-radius: 5px; padding: 8px 12px; margin-bottom: 10px; font-size: 10px; color: #5D4037; }
+
+/* Escalation path */
+#tab-monitoring .esc-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 0; }
+#tab-monitoring .esc-card { border-radius: 8px; overflow: hidden; border: 1px solid #DDE3F0; }
+#tab-monitoring .esc-card-hdr { padding: 10px 12px; font-size: 11px; font-weight: 700; color: #fff; }
+#tab-monitoring .esc-card-body { padding: 10px 12px; background: #F5F7FB; }
+#tab-monitoring .esc-item { font-size: 11px; color: #4A5568; margin-bottom: 5px; line-height: 1.5; }
+#tab-monitoring .esc-item b { color: #1A2E5A; }
+
+/* Bot note */
+#tab-monitoring .bot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+#tab-monitoring .bot-card { background: #F5F7FB; border-radius: 8px; border: 1px solid #DDE3F0; padding: 14px; }
+#tab-monitoring .bot-card h4 { font-size: 12px; font-weight: 700; color: #1A2E5A; margin-bottom: 8px; }
+#tab-monitoring .bot-item { display: flex; gap: 8px; margin-bottom: 7px; font-size: 11px; color: #4A5568; line-height: 1.5; }
+#tab-monitoring .bot-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; background: #365EBF; }
+#tab-monitoring .bot-status { display: flex; justify-content: space-between; align-items: center; padding: 5px 8px; border-radius: 5px; font-size: 11px; margin-bottom: 4px; }
+#tab-monitoring .bot-status.ok { background: #E8F5E9; }
+#tab-monitoring .bot-status.watch { background: #FFF8E1; }
+</style>
+
+<div id="tab-monitoring">
+
+<!-- ── HEADER ── -->
+<div class="mn-header">
+  <h2>Monthly Monitoring & Governance</h2>
+  <p>A repeatable, audit-defensible QA cycle that tracks accuracy and timeliness of case decisions, identifies root causes, and closes the loop through coaching, SOP updates, and escalation.</p>
+  <span class="mn-ex-tag">📋 Queue Example: Regular Funding</span>
+</div>
+
+<!-- ── 1. HIGH LEVEL DESCRIPTION + PROCESS FLOW ── -->
+<div class="mn-section">
+  <div class="mn-section-title">📌 Monthly QA Process — Overview & Flow <span class="mn-badge">4 Stages</span></div>
+  <p style="font-size:12px;color:#4A5568;line-height:1.7;margin-bottom:14px;">Each month, a QA sample is pulled from iBoss for the Regular Funding queue. The reviewer independently re-evaluates each case against the SOP — without looking at the analyst's decision first — then compares the outcome. The score, root cause, and actions are documented in a Google Sheet and summarised in a QA memo to Ops Leadership.</p>
+
+  <div class="mn-flow-wrap">
+    <!-- Stage 1 -->
+    <div class="mn-flow-stage">
+      <div class="mn-flow-hdr" style="background:#1A2E5A;">📥 1. Inputs</div>
+      <div class="mn-flow-body">
+        <div class="mn-flow-item"><div class="mn-flow-dot" style="background:#365EBF;"></div><div><b>iBoss data pull</b>Case ID, analyst decision &amp; notes, materials uploaded</div></div>
+        <div class="mn-flow-item"><div class="mn-flow-dot" style="background:#365EBF;"></div><div><b>SLA timestamps</b>Case pick-up → decision timestamp from iBoss</div></div>
+        <div class="mn-flow-item"><div class="mn-flow-dot" style="background:#0CA750;"></div><div><b>Accuracy check</b>Flag implausible fields · Compare decision mix to trend</div></div>
+        <div class="mn-flow-item"><div class="mn-flow-dot" style="background:#0CA750;"></div><div><b>Completeness check</b>Reconcile iBoss count vs. data lake query</div></div>
+      </div>
+    </div>
+    <div class="mn-arrow-col">→</div>
+    <!-- Stage 2 -->
+    <div class="mn-flow-stage">
+      <div class="mn-flow-hdr" style="background:#1A5276;">⚙️ 2. Processing</div>
+      <div class="mn-flow-body">
+        <div class="mn-flow-item"><div class="mn-flow-dot" style="background:#365EBF;"></div><div><b>Independent decision</b>Review case in iBoss, follow SOP — disregard analyst's decision</div></div>
+        <div class="mn-flow-item"><div class="mn-flow-dot" style="background:#365EBF;"></div><div><b>Log in Google Sheet</b>Match/diverge, reason, decision time, SLA flag — one tab per month</div></div>
+        <div class="mn-flow-item"><div class="mn-flow-dot" style="background:#E86000;"></div><div><b>QA Score</b>% match vs. analyst · Compare to 80% threshold &amp; 3-month trend</div></div>
+        <div class="mn-flow-item"><div class="mn-flow-dot" style="background:#C00000;"></div><div><b>Root cause</b>Individual agent · SOP gap · Policy update not in SOP · System issue</div></div>
+      </div>
+    </div>
+    <div class="mn-arrow-col">→</div>
+    <!-- Stage 3 -->
+    <div class="mn-flow-stage">
+      <div class="mn-flow-hdr" style="background:#1A5276;">📤 3. Outputs</div>
+      <div class="mn-flow-body">
+        <div class="mn-flow-item"><div class="mn-flow-dot" style="background:#365EBF;"></div><div><b>QA Google Sheet</b>Case-level audit trail · Root cause &amp; action logged per case</div></div>
+        <div class="mn-flow-item"><div class="mn-flow-dot" style="background:#0CA750;"></div><div><b>QA Summary Memo</b>Scores vs. thresholds · Root cause · Actions with owner &amp; due date · Prior month carry-forward</div></div>
+        <div class="mn-flow-item"><div class="mn-flow-dot" style="background:#365EBF;"></div><div><b>Dashboard update</b>QA scores &amp; SLA reflected in Risk Portal QA Dashboard</div></div>
+      </div>
+    </div>
+    <div class="mn-arrow-col">→</div>
+    <!-- Stage 4 -->
+    <div class="mn-flow-stage">
+      <div class="mn-flow-hdr" style="background:#1A2E5A;">🔄 4. Action Loop</div>
+      <div class="mn-flow-body">
+        <div class="mn-flow-item"><div class="mn-flow-dot" style="background:#C00000;"></div><div><b>Individual issue</b>Coaching memo with case IDs · Copy manager · Agent signs off</div></div>
+        <div class="mn-flow-item"><div class="mn-flow-dot" style="background:#E86000;"></div><div><b>SOP gap</b>Update SOP · Broader group training · All analysts sign off</div></div>
+        <div class="mn-flow-item"><div class="mn-flow-dot" style="background:#5BA829;"></div><div><b>Follow-up</b>Prior coached agents prioritised next cycle · Carry-forward in memo closes the loop</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 2. QA GOOGLE SHEET PREVIEW ── -->
+<div class="mn-section">
+  <div class="mn-section-title blue-eyebrow">📊 QA Google Sheet — Regular Funding <span class="mn-badge">May 2026 · Dummy Data</span></div>
+  <div class="mn-sheet-wrap">
+    <!-- Chrome bar -->
+    <div class="mn-sheet-chrome">
+      <div class="mn-sheet-icon">≡</div>
+      <div class="mn-sheet-name">QA Tracker — Regular Funding Queue</div>
+      <span style="font-size:10px;color:#5f6368;margin-left:8px;">Risk Ops QA · Monthly QA scoring and case-level log</span>
+    </div>
+    <!-- Tab bar -->
+    <div class="mn-tab-bar">
+      <div class="mn-tab">Jan 2026</div><div class="mn-tab">Feb 2026</div><div class="mn-tab">Mar 2026</div><div class="mn-tab">Apr 2026</div>
+      <div class="mn-tab active">May 2026</div>
+      <div class="mn-tab" style="color:#0F9D58;font-weight:700;">+ New month</div>
+    </div>
+    <!-- Summary strip -->
+    <div class="mn-summary-strip">
+      <div class="mn-summary-box"><div class="sb-title">📊 May 2026 Summary</div>
+        <div class="sb-row"><span class="sb-label">Cases sampled</span><span class="sb-val">30 of 1,440</span></div>
+        <div class="sb-row"><span class="sb-label">QA Score</span><span class="sb-val sb-amber">75% ⚠ Below 80%</span></div>
+        <div class="sb-row"><span class="sb-label">SLA Met</span><span class="sb-val sb-red">63% 🔴 Below 75%</span></div>
+      </div>
+      <div class="mn-summary-box"><div class="sb-title">📉 QA Score Trend</div>
+        <div class="sb-row"><span class="sb-label">Feb</span><span class="sb-val sb-green">82%</span></div>
+        <div class="sb-row"><span class="sb-label">Mar</span><span class="sb-val sb-green">80%</span></div>
+        <div class="sb-row"><span class="sb-label">Apr</span><span class="sb-val sb-amber">78%</span></div>
+        <div class="sb-row"><span class="sb-label">May</span><span class="sb-val sb-red">75% ↓ Declining</span></div>
+      </div>
+      <div class="mn-summary-box"><div class="sb-title">🔍 Root Cause (May)</div>
+        <div class="sb-row"><span class="sb-label">Agent-level</span><span class="sb-val sb-red">Agent 3: 7 mismatches</span></div>
+        <div class="sb-row"><span class="sb-label">SOP gap</span><span class="sb-val sb-amber">5 cases (policy update)</span></div>
+        <div class="sb-row"><span class="sb-label">Escalated</span><span class="sb-val sb-red">Yes — Ops Lead notified</span></div>
+      </div>
+    </div>
+    <!-- Grid -->
+    <div class="mn-grid-wrap">
+      <table>
+        <thead>
+          <tr><td class="rn"></td><td class="ch">A</td><td class="ch">B</td><td class="ch">C</td><td class="ch">D</td><td class="ch">E</td><td class="ch">F</td><td class="ch">G</td><td class="ch">H</td><td class="ch">I</td><td class="ch">J</td><td class="ch">K</td><td class="ch">L</td></tr>
+          <tr><td class="rn">1</td><td class="hdr2">Case ID</td><td class="hdr2">Analyst</td><td class="hdr2">Pick-up (iBoss)</td><td class="hdr2">Decision (iBoss)</td><td class="hdr2">Time (hrs)</td><td class="hdr2">SLA Met?</td><td class="hdr2">Analyst Decision</td><td class="hdr2">QA Decision</td><td class="hdr2">Match?</td><td class="hdr2">Category</td><td class="hdr2">Divergence Reason</td><td class="hdr2">Notes</td></tr>
+        </thead>
+        <tbody>
+          <tr><td class="rn">2</td><td>RF-20260501</td><td>Agent 1</td><td>2026-05-01 09:12</td><td>2026-05-01 21:45</td><td>12.6</td><td><span class="gb y">Y</span></td><td>Approved</td><td>Approved</td><td><span class="gb y">Y</span></td><td>—</td><td>—</td><td>Clean</td></tr>
+          <tr><td class="rn">3</td><td>RF-20260502</td><td>Agent 3</td><td>2026-05-01 10:30</td><td>2026-05-03 08:15</td><td>45.8</td><td><span class="gb n">N</span></td><td>Approved</td><td>Pending Info</td><td><span class="gb n">N</span></td><td>Individual</td><td>Missing bank statement — SOP requires hold for review</td><td>Coaching needed</td></tr>
+          <tr><td class="rn">4</td><td>RF-20260503</td><td>Agent 2</td><td>2026-05-01 11:00</td><td>2026-05-02 09:30</td><td>22.5</td><td><span class="gb y">Y</span></td><td>Pending Info</td><td>Pending Info</td><td><span class="gb y">Y</span></td><td>—</td><td>—</td><td>Clean</td></tr>
+          <tr><td class="rn">5</td><td>RF-20260504</td><td>Agent 3</td><td>2026-05-02 08:45</td><td>2026-05-04 10:00</td><td>49.3</td><td><span class="gb n">N</span></td><td>Approved</td><td>Rejected</td><td><span class="gb n">N</span></td><td>Individual</td><td>Risk score exceeded threshold — should trigger rejection per SOP §4.2</td><td>Coaching needed</td></tr>
+          <tr><td class="rn">6</td><td>RF-20260505</td><td>Agent 1</td><td>2026-05-02 09:00</td><td>2026-05-02 17:30</td><td>8.5</td><td><span class="gb y">Y</span></td><td>Rejected</td><td>Rejected</td><td><span class="gb y">Y</span></td><td>—</td><td>—</td><td>Clean</td></tr>
+          <tr><td class="rn">7</td><td>RF-20260506</td><td>Agent 4</td><td>2026-05-02 13:00</td><td>2026-05-03 14:15</td><td>25.3</td><td><span class="gb y">Y</span></td><td>Approved</td><td>Approved</td><td><span class="gb y">Y</span></td><td>—</td><td>—</td><td>Clean</td></tr>
+          <tr><td class="rn">8</td><td>RF-20260507</td><td>Agent 3</td><td>2026-05-03 08:30</td><td>2026-05-05 11:45</td><td>51.3</td><td><span class="gb n">N</span></td><td>Approved</td><td>Pending Info</td><td><span class="gb n">N</span></td><td>Individual</td><td>Bank statement not uploaded — not flagged (3rd mismatch Agent 3)</td><td>Coaching needed</td></tr>
+          <tr><td class="rn">9</td><td>RF-20260508</td><td>Agent 2</td><td>2026-05-03 10:00</td><td>2026-05-04 08:00</td><td>22.0</td><td><span class="gb y">Y</span></td><td>Pending Info</td><td>Approved</td><td><span class="gb n">N</span></td><td>SOP Gap</td><td>Apr 2026 policy update allows approval with partial docs — SOP not updated</td><td>SOP fix needed</td></tr>
+          <tr><td class="rn">10</td><td>RF-20260509</td><td>Agent 1</td><td>2026-05-03 14:00</td><td>2026-05-04 10:30</td><td>20.5</td><td><span class="gb y">Y</span></td><td>Approved</td><td>Approved</td><td><span class="gb y">Y</span></td><td>—</td><td>—</td><td>Clean</td></tr>
+          <tr><td class="rn">11</td><td>RF-20260510</td><td>Agent 4</td><td>2026-05-04 09:00</td><td>2026-05-05 16:00</td><td>31.0</td><td><span class="gb y">Y</span></td><td>Approved</td><td>Approved</td><td><span class="gb y">Y</span></td><td>—</td><td>—</td><td>Clean</td></tr>
+          <tr><td class="rn">12</td><td>RF-20260511</td><td>Agent 3</td><td>2026-05-05 08:00</td><td>2026-05-07 14:00</td><td>54.0</td><td><span class="gb n">N</span></td><td>Rejected</td><td>Pending Info</td><td><span class="gb n">N</span></td><td>Individual</td><td>Rejection premature — additional docs not requested per SOP §3.1</td><td>4th mismatch Agent 3</td></tr>
+          <tr><td class="rn">13</td><td>RF-20260512</td><td>Agent 2</td><td>2026-05-05 10:30</td><td>2026-05-06 09:00</td><td>22.5</td><td><span class="gb y">Y</span></td><td>Pending Info</td><td>Approved</td><td><span class="gb n">N</span></td><td>SOP Gap</td><td>Apr 2026 policy update — same issue as RF-20260508</td><td>SOP fix needed</td></tr>
+          <tr><td class="rn">14</td><td>RF-20260513</td><td>Agent 1</td><td>2026-05-06 08:00</td><td>2026-05-06 18:30</td><td>10.5</td><td><span class="gb y">Y</span></td><td>Approved</td><td>Approved</td><td><span class="gb y">Y</span></td><td>—</td><td>—</td><td>Clean</td></tr>
+          <tr><td class="rn">15</td><td>RF-20260515</td><td>Agent 3</td><td>2026-05-07 08:30</td><td>2026-05-09 15:00</td><td>54.5</td><td><span class="gb n">N</span></td><td>Approved</td><td>Pending Info</td><td><span class="gb n">N</span></td><td>Individual</td><td>Bank statement not uploaded or verified (5th mismatch Agent 3)</td><td>Coaching needed</td></tr>
+          <tr class="sect-row"><td class="rn">16</td><td colspan="12">··· 15 additional cases (Rows 16–30) — 10 match, 5 diverge (3 Individual / 2 SOP Gap) ···</td></tr>
+          <tr class="total-row"><td class="rn">31</td><td colspan="2">TOTALS — May 2026</td><td colspan="2"></td><td>Avg: 38.4 hrs</td><td>SLA: 63% 🔴</td><td></td><td></td><td>QA Score: 75% ⚠</td><td>Individual: 10</td><td>SOP Gap: 5</td><td>Threshold: 80%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ── 3. QA SUMMARY MEMO PREVIEW ── -->
+<div class="mn-section">
+  <div class="mn-section-title blue-eyebrow">📄 QA Summary Memo — May 2026 <span class="mn-badge">Dummy Data</span></div>
+  <div class="mn-memo-wrap">
+    <div class="mn-memo-page">
+      <!-- Letterhead -->
+      <div class="mn-memo-lh">
+        <div><div class="mn-memo-lh-brand">Risk Ops — QA Summary Memo</div><div class="mn-memo-lh-sub">Internal Use Only · Not for External Distribution</div></div>
+        <div class="mn-memo-lh-badge">DUMMY DATA</div>
+      </div>
+      <!-- Header block -->
+      <div class="mn-memo-hdr">
+        <table>
+          <tr><td class="lbl">TO:</td><td>Ops Senior Leadership</td><td class="lbl">FROM:</td><td>Risk Ops QA — Zi Ye</td></tr>
+          <tr><td class="lbl">RE:</td><td colspan="3"><strong>Monthly QA Summary — Regular Funding Queue | May 2026 Cycle</strong></td></tr>
+          <tr><td class="lbl">DATE:</td><td colspan="3">June 3, 2026</td></tr>
+        </table>
+      </div>
+      <!-- KPI scorecard -->
+      <div class="memo-h2">May 2026 — KPI Scorecard</div>
+      <div class="mn-memo-kpi-grid">
+        <div class="mn-kpi amber"><div class="kl">QA Score</div><div class="kv">75%</div><div class="kt">Target ≥ 80% · ⚠ Below</div></div>
+        <div class="mn-kpi red"><div class="kl">SLA Adherence</div><div class="kv">63%</div><div class="kt">Target ≥ 75% · 🔴 RED</div></div>
+        <div class="mn-kpi red"><div class="kl">Avg Decision Time</div><div class="kv">38.4h</div><div class="kt">Target ≤ 36 hrs · 🔴 RED</div></div>
+        <div class="mn-kpi red"><div class="kl">Escalation Rate</div><div class="kv">20%</div><div class="kt">Target ≤ 15% · 🔴 RED</div></div>
+      </div>
+      <p class="memo-p"><strong>Sample:</strong> 30 cases from 1,440 worked in May 2026. Data from iBoss — pick-up &amp; decision timestamps, analyst notes and decisions. Reconciled against data lake — no discrepancy.</p>
+      <!-- Trend -->
+      <div class="memo-h2">QA Score Trend</div>
+      <p class="memo-p">QA score has declined for three consecutive months: <strong>82% (Feb) → 80% (Mar) → 78% (Apr) → 75% (May)</strong>. May is the first breach of the 80% threshold this year. Escalation to Ops Leadership required.</p>
+      <!-- Root cause -->
+      <div class="memo-h2">Root Cause Analysis</div>
+      <p class="memo-p"><strong>1. Individual Agent Issue — Agent 3:</strong> 7 of 15 divergences (47%) attributable to Agent 3. Recurring pattern: missing bank statement not flagged, premature rejections before additional document request. Training and onboarding gap — not an SOP issue.</p>
+      <p class="memo-p"><strong>2. SOP Gap — April 2026 Policy Update:</strong> 5 divergences where Agent 2 followed the old SOP correctly, but SOP has not been updated to reflect the April 2026 policy change. Process failure — not individual.</p>
+      <!-- Escalation -->
+      <div class="memo-esc"><div class="memo-esc-title">🔴 Escalation Notice</div>QA Score (75%) below 80% threshold. Ops Leadership notified within 1 week of cycle close. If below threshold again in June, matter escalated to Risk Governance.</div>
+      <!-- Actions -->
+      <div class="memo-h2">Action Items</div>
+      <table class="memo-action-table">
+        <thead><tr><th>#</th><th>Action</th><th>Owner</th><th>Due</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Issue coaching memo to Agent 3. List case IDs and recurring error. Require sign-off.</td><td>QA Lead</td><td>Jun 6</td><td><span class="mpill open">Open</span></td></tr>
+          <tr><td>2</td><td>Copy Agent 3's manager on coaching memo.</td><td>QA Lead</td><td>Jun 6</td><td><span class="mpill open">Open</span></td></tr>
+          <tr><td>3</td><td>Submit SOP update request — incorporate April 2026 policy change on partial doc approval.</td><td>QA Lead + Process</td><td>Jun 10</td><td><span class="mpill open">Open</span></td></tr>
+          <tr><td>4</td><td>Team-wide training once SOP updated. All analysts sign off.</td><td>Ops Manager</td><td>Jun 20</td><td><span class="mpill open">Open</span></td></tr>
+          <tr><td>5</td><td>Prioritise Agent 3 in June QA sample to assess coaching effectiveness.</td><td>QA Lead</td><td>Jul 3</td><td><span class="mpill open">Open</span></td></tr>
+        </tbody>
+      </table>
+      <!-- Carry-forward -->
+      <div class="memo-h2">Prior Month Carry-Forward — April 2026</div>
+      <div class="memo-cf">
+        <ul class="memo-ul">
+          <li>✅ Bulk closure validation gate — Completed. Implemented May 15.</li>
+          <li>🔄 Agent performance review meeting — In progress. Scheduled June 5.</li>
+          <li>✅ iBoss data reconciliation template — Completed and approved.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 4. ESCALATION PATH ── -->
+<div class="mn-section">
+  <div class="mn-section-title">⚡ Escalation Path</div>
+  <div class="esc-grid">
+    <div class="esc-card">
+      <div class="esc-card-hdr" style="background:#E86000;">⚠ QA Score &lt; 80%</div>
+      <div class="esc-card-body">
+        <div class="esc-item"><b>Escalate to:</b> Ops Leadership</div>
+        <div class="esc-item"><b>By when:</b> Within 1 week of cycle close</div>
+        <div class="esc-item"><b>Action:</b> Written notification with root cause and action plan in QA Summary Memo</div>
+      </div>
+    </div>
+    <div class="esc-card">
+      <div class="esc-card-hdr" style="background:#C00000;">🔴 SLA &lt; 75%</div>
+      <div class="esc-card-body">
+        <div class="esc-item"><b>Escalate to:</b> Ops Leadership</div>
+        <div class="esc-item"><b>By when:</b> Real-time alert — do not wait for cycle close</div>
+        <div class="esc-item"><b>Action:</b> Immediate review of backlog, decision time, and staffing</div>
+      </div>
+    </div>
+    <div class="esc-card">
+      <div class="esc-card-hdr" style="background:#8B0000;">📋 Below threshold 2+ cycles</div>
+      <div class="esc-card-body">
+        <div class="esc-item"><b>Escalate to:</b> Risk Governance</div>
+        <div class="esc-item"><b>By when:</b> At second cycle close</div>
+        <div class="esc-item"><b>Action:</b> Escalation memo; governance consultation on remediation approach</div>
+      </div>
+    </div>
+    <div class="esc-card">
+      <div class="esc-card-hdr" style="background:#1A2E5A;">🏛 Control failure / SOX</div>
+      <div class="esc-card-body">
+        <div class="esc-item"><b>Escalate to:</b> Internal Audit</div>
+        <div class="esc-item"><b>By when:</b> Immediately</div>
+        <div class="esc-item"><b>Action:</b> Direct escalation; remediation plan required before next cycle</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 5. BOT AND AI QA NOTE ── -->
+<div class="mn-section">
+  <div class="mn-section-title blue-eyebrow">🤖 Bot & AI Agent QA — Separate Monitoring Track</div>
+  <p style="font-size:12px;color:#4A5568;line-height:1.7;margin-bottom:14px;">RPA bot and AI agent decisioning quality is monitored separately from human QA scores. They are different control populations with different error profiles and different remediation paths. </p>
+  <div class="bot-grid">
+    <div class="bot-card">
+      <h4>🔍 How Bot QA Works</h4>
+      <div class="bot-item"><div class="bot-dot"></div><div>Same independent-decision methodology applied to a sample of bot-decisioned cases each month</div></div>
+      <div class="bot-item"><div class="bot-dot"></div><div>Bot QA score tracked separately — never averaged into human QA score</div></div>
+      <div class="bot-item"><div class="bot-dot" style="background:#C00000;"></div><div>Accuracy drop → escalated to <strong>RPA team</strong>, not Ops. Coaching is not the remediation path</div></div>
+      <div class="bot-item"><div class="bot-dot" style="background:#C00000;"></div><div>Bot findings documented in a dedicated section of the QA Summary Memo with specific case IDs and error pattern</div></div>
+    </div>
+    <div class="bot-card">
+      <h4>📊 May 2026 — Bot & AI Status</h4>
+      <div class="bot-status ok"><span>🤖 RPA Bot</span><span style="font-weight:700;color:#0CA750;">88% ✅</span></div>
+      <div style="font-size:10px;color:#4A5568;margin:-2px 0 8px 8px;">Target ≥ 85% · Within range · No RPA team escalation required</div>
+      <div class="bot-status watch"><span>🧠 AI Agent</span><span style="font-weight:700;color:#D4A800;">80% ⚠</span></div>
+      <div style="font-size:10px;color:#4A5568;margin:-2px 0 8px 8px;">Target ≥ 80% · At threshold · Monitor closely in June</div>
+      <div style="margin-top:10px;padding:8px;background:#E8EDF7;border-radius:5px;font-size:10px;color:#1A2E5A;">
+        <strong>Note:</strong> If AI Agent score drops below threshold in June, findings will be escalated to the RPA team with specific error pattern and case IDs.
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end tab-monitoring -->
+
+  </div><!-- end tab-monitoring -->
 
 </div>
 
