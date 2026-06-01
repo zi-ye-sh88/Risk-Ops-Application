@@ -709,12 +709,13 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
     </div>
     <div class="db-charts-grid">
       <div class="db-card"><div class="db-card-title">Human vs Bot vs AI — QA Score</div><div class="db-chart-wrap"><canvas id="dbBotChart"></canvas></div></div>
+      <div class="db-card"><div class="db-card-title">SLA Adherence by Agent (%)</div><div class="db-chart-wrap"><canvas id="dbSlaAgentChart"></canvas></div></div>
     </div>
     <div class="db-charts-grid">
       <div class="db-card"><div class="db-card-title">Case Decision Time Distribution (hrs)</div><div class="db-chart-wrap"><canvas id="dbDecisionTimeChart"></canvas></div></div>
       <div class="db-card"><div class="db-card-title">Decision Distribution by Queue (%)</div><div class="db-chart-wrap"><canvas id="dbDecisionDistChart"></canvas></div></div>
     </div>
-    <div class="db-note"><strong>Agents flagged:</strong> Agent 3 (Instant Funding) — QA 68%, escalation 22%. Agent 2 (Regular Funding) — QA 72%, escalation 21%. Both require coaching + SOP review.</div>
+    <div class="db-note"><strong>Agents flagged:</strong> Agent 3 (Instant Funding) — QA 68%, SLA 61%. Agent 2 (Regular Funding) — QA 72%, SLA 63%. Both require coaching + SOP review.</div>
   </div>
 
   </div><!-- end tab-dashboard -->
@@ -1149,6 +1150,8 @@ function dbInitCharts() {
     {label:'Financial Limit',data:[42,30,18,8,2],backgroundColor:dbC.green,borderRadius:3},
     {label:'FDT',data:[8,20,38,25,9],backgroundColor:dbC.blue,borderRadius:3}
   ]},options:{...dO,plugins:{legend:{display:true,labels:{font:{size:8}}}}}});
+
+  new Chart(document.getElementById('dbSlaAgentChart'),{type:'bar',data:{labels:['Agent 1','Agent 2','Agent 3','Agent 4','Agent 5','Agent 6'],datasets:[{data:[85,63,61,74,88,93],backgroundColor:['#5BA829','#C00000','#C00000','#E86000','#5BA829','#5BA829'],borderRadius:4}]},options:{...dO,scales:{...dO.scales,y:{min:0,max:100,ticks:{font:{size:9},callback:v=>v+'%'}}}}});
 
   new Chart(document.getElementById('dbDecisionDistChart'),{type:'bar',data:{labels:dbQ,datasets:[
     {label:'Approved',data:[68,62,65,80,70],backgroundColor:dbC.green,borderRadius:3},
