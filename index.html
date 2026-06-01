@@ -704,12 +704,11 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
       <button class="db-filter-btn" onclick="dbSetFilter(this)">FDT</button>
     </div>
     <div class="db-card">
-      <div class="db-card-title">Agent-Level QA Score & Escalation Rate <span class="db-badge">Human Reviewers</span></div>
+      <div class="db-card-title">Agent-Level QA Score <span class="db-badge">Human Reviewers</span></div>
       <div class="db-agent-grid" id="dbAgentGrid"></div>
     </div>
     <div class="db-charts-grid">
       <div class="db-card"><div class="db-card-title">Human vs Bot vs AI — QA Score</div><div class="db-chart-wrap"><canvas id="dbBotChart"></canvas></div></div>
-      <div class="db-card"><div class="db-card-title">Escalation Rate by Queue (%)</div><div class="db-chart-wrap"><canvas id="dbEscalationChart"></canvas></div></div>
     </div>
     <div class="db-charts-grid">
       <div class="db-card"><div class="db-card-title">Case Decision Time Distribution (hrs)</div><div class="db-chart-wrap"><canvas id="dbDecisionTimeChart"></canvas></div></div>
@@ -795,7 +794,7 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
 #tab-monitoring .mn-memo-hdr table { width: 100%; border-collapse: collapse; }
 #tab-monitoring .mn-memo-hdr td { padding: 2px 6px; vertical-align: top; }
 #tab-monitoring .mn-memo-hdr .lbl { font-weight: 700; color: #1A2E5A; width: 55px; font-size: 10px; }
-#tab-monitoring .mn-memo-kpi-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 7px; margin-bottom: 12px; }
+#tab-monitoring .mn-memo-kpi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 7px; margin-bottom: 12px; }
 #tab-monitoring .mn-kpi { border-radius: 5px; padding: 8px 10px; border: 1px solid #DDE3F0; border-top: 3px solid #DDE3F0; }
 #tab-monitoring .mn-kpi.red { border-top-color: #C00000; }
 #tab-monitoring .mn-kpi.amber { border-top-color: #E86000; }
@@ -890,7 +889,7 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
       <div class="mn-flow-body">
         <div class="mn-flow-item"><div class="mn-flow-dot" style="background:#C00000;"></div><div><b>Individual issue</b>Coaching memo with case IDs · Copy manager · Agent signs off</div></div>
         <div class="mn-flow-item"><div class="mn-flow-dot" style="background:#E86000;"></div><div><b>SOP gap</b>Update SOP · Broader group training · All analysts sign off</div></div>
-        <div class="mn-flow-item"><div class="mn-flow-dot" style="background:#5BA829;"></div><div><b>Follow-up</b>Prior coached agents prioritised next cycle · Carry-forward in memo closes the loop</div></div>
+        <div class="mn-flow-item"><div class="mn-flow-dot" style="background:#5BA829;"></div><div><b>Follow-up</b>Prior coached agents prioritised next cycle · Carry-forward in QA memo closes the loop</div></div>
       </div>
     </div>
   </div>
@@ -984,8 +983,7 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
       <div class="mn-memo-kpi-grid">
         <div class="mn-kpi amber"><div class="kl">QA Score</div><div class="kv">75%</div><div class="kt">Target ≥ 80% · ⚠ Below</div></div>
         <div class="mn-kpi red"><div class="kl">SLA Adherence</div><div class="kv">63%</div><div class="kt">Target ≥ 75% · 🔴 RED</div></div>
-        <div class="mn-kpi red"><div class="kl">Avg Decision Time</div><div class="kv">38.4h</div><div class="kt">Target ≤ 36 hrs · 🔴 RED</div></div>
-        <div class="mn-kpi red"><div class="kl">Escalation Rate</div><div class="kv">20%</div><div class="kt">Target ≤ 15% · 🔴 RED</div></div>
+        <div class="mn-kpi red"><div class="kl">Avg Decision Time</div><div class="kv">38.4h</div><div class="kt">Target ≤ 36 hrs · 🔴 RED</div></div><div class="kt">Target ≤ 15% · 🔴 RED</div></div>
       </div>
       <p class="memo-p"><strong>Sample:</strong> 30 cases from 1,440 worked in May 2026. Data from iBoss — pick-up &amp; decision timestamps, analyst notes and decisions. Reconciled against data lake — no discrepancy.</p>
       <!-- Trend -->
@@ -1142,7 +1140,7 @@ function dbInitCharts() {
     {label:'AI Agent',data:[83,80,79,89,85],backgroundColor:'#7B68AE',borderRadius:3}
   ]},options:{...dO,plugins:{legend:{display:true,labels:{font:{size:9}}}},scales:{...dO.scales,y:{min:60,max:100,ticks:{font:{size:9},callback:v=>v+'%'}}}}});
 
-  new Chart(document.getElementById('dbEscalationChart'),{type:'bar',data:{labels:dbQ,datasets:[{data:[18,20,14,4,11],backgroundColor:[dbC.red,dbC.red,dbC.orange,dbC.green,dbC.orange],borderRadius:4}]},options:{...dO,scales:{...dO.scales,y:{ticks:{font:{size:9},callback:v=>v+'%'}}}}});
+  
 
   new Chart(document.getElementById('dbDecisionTimeChart'),{type:'bar',data:{labels:['<4h','4–8h','8–24h','24–48h','>48h'],datasets:[
     {label:'Instant Funding',data:[5,12,28,35,20],backgroundColor:dbC.red,borderRadius:3},
@@ -1161,12 +1159,12 @@ function dbInitCharts() {
 
 // Agent cards
 const dbAgents=[
-  {name:"Agent 1",role:"Human Reviewer",queue:"Instant Funding",qa:92,esc:8,sla:85,status:"ok"},
-  {name:"Agent 2",role:"Human Reviewer",queue:"Regular Funding",qa:72,esc:21,sla:63,status:"flag"},
-  {name:"Agent 3",role:"Human Reviewer",queue:"Instant Funding",qa:68,esc:22,sla:61,status:"flag"},
-  {name:"Agent 4",role:"Human Reviewer",queue:"Anomaly Detection",qa:80,esc:14,sla:74,status:"watch"},
-  {name:"Agent 5",role:"Human Reviewer",queue:"FDT",qa:88,esc:7,sla:88,status:"ok"},
-  {name:"Agent 6",role:"Human Reviewer",queue:"Financial Limit",qa:91,esc:4,sla:93,status:"ok"},
+  {name:"Agent 1",role:"Human Reviewer",queue:"Instant Funding",qa:92,sla:85,status:"ok"},
+  {name:"Agent 2",role:"Human Reviewer",queue:"Regular Funding",qa:72,sla:63,status:"flag"},
+  {name:"Agent 3",role:"Human Reviewer",queue:"Instant Funding",qa:68,sla:61,status:"flag"},
+  {name:"Agent 4",role:"Human Reviewer",queue:"Anomaly Detection",qa:80,sla:74,status:"watch"},
+  {name:"Agent 5",role:"Human Reviewer",queue:"FDT",qa:88,sla:88,status:"ok"},
+  {name:"Agent 6",role:"Human Reviewer",queue:"Financial Limit",qa:91,sla:93,status:"ok"},
 ];
 function dbBarColor(v,inv=false){if(inv)return v<=8?'#5BA829':v<=15?'#D4A800':'#C00000';return v>=85?'#5BA829':v>=75?'#D4A800':'#C00000';}
 const dbGrid=document.getElementById('dbAgentGrid');
@@ -1177,8 +1175,6 @@ dbAgents.forEach(a=>{dbGrid.innerHTML+=`
     <div class="db-agent-role">${a.role} · ${a.queue}</div>
     <div class="db-metric-row"><span class="db-metric-label">QA Score</span><span class="db-metric-val" style="color:${dbBarColor(a.qa)}">${a.qa}%</span></div>
     <div class="db-bar-bg"><div class="db-bar-fill" style="width:${a.qa}%;background:${dbBarColor(a.qa)}"></div></div>
-    <div class="db-metric-row"><span class="db-metric-label">Escalation Rate</span><span class="db-metric-val" style="color:${dbBarColor(a.esc,true)}">${a.esc}%</span></div>
-    <div class="db-bar-bg"><div class="db-bar-fill" style="width:${Math.min(a.esc*4,100)}%;background:${dbBarColor(a.esc,true)}"></div></div>
     <div class="db-metric-row"><span class="db-metric-label">SLA Adherence</span><span class="db-metric-val" style="color:${dbBarColor(a.sla)}">${a.sla}%</span></div>
     <div class="db-bar-bg"><div class="db-bar-fill" style="width:${a.sla}%;background:${dbBarColor(a.sla)}"></div></div>
   </div>`;});
