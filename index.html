@@ -461,14 +461,14 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
     <!-- Objective -->
     <div class="rh-obj">
       <h3>Objective</h3>
-      <p>Before you can prioritize risk, you need a consistent way to measure it. This framework does that — it takes the inherent risk exposure across five dimensions (Financial, Operational, Regulatory, Reputational, and Third-Party), overlays how well controls are actually working, and produces a residual risk score that tells leadership where to pay attention. The goal is a view executives can act on, not just a list of things that could go wrong.</p>
+      <p>This framework provides a standardized methodology for proactively identifying, categorizing, and ranking emerging operational risks across multiple business lines. It enables portfolio-level visibility for executive leadership by quantifying both inherent risk exposure and the mitigating effect of existing controls — resulting in a residual risk view that drives prioritized action. The scoring methodology uses objective, measurable criteria across five risk dimensions (Financial, Operational, Regulatory, Reputational, and Third-Party) to ensure consistency, transparency, and cross-functional alignment in risk reporting.</p>
     </div>
 
     <!-- 3 Steps -->
     <div class="rh-steps">
-      <div class="rh-step"><div class="rh-step-num">Step 1</div><h3>Inherent Risk Assessment</h3><p>Rate each risk on likelihood and impact — both 1–5 — before any controls are considered. Multiply them. That's your raw score (1–25): how bad could this get if nothing was stopping it?</p><span class="rh-arrow">➔</span></div>
-      <div class="rh-step"><div class="rh-step-num">Step 2</div><h3>Residual Risk Calculation</h3><p>Layer in <strong>Control Maturity</strong> (1=Optimized, 5=Initial). Multiply inherent score × control maturity. This is the number that matters — what's actually left after your controls do their job.</p><span class="rh-arrow">➔</span></div>
-      <div class="rh-step"><div class="rh-step-num">Step 3</div><h3>Prioritized Action</h3><p>The residual score maps to one of five tiers — Critical down to Minimal. Each tier has a clear response: who owns it, how often it gets reviewed, and when it goes up the chain.</p></div>
+      <div class="rh-step"><div class="rh-step-num">Step 1</div><h3>Inherent Risk Assessment</h3><p>Score each risk on a 5&times;5 grid of <strong>Likelihood &times; Impact</strong> before any controls are applied. This produces an inherent risk score (1&ndash;25) representing the raw exposure if no mitigation existed.</p><span class="rh-arrow">➔</span></div>
+      <div class="rh-step"><div class="rh-step-num">Step 2</div><h3>Residual Risk Calculation</h3><p>Overlay a <strong>Control Maturity</strong> assessment (1=Optimized to 5=Initial) onto the inherent score. Residual Risk = Inherent Score &times; Control Maturity, revealing what risk remains after existing controls are applied.</p><span class="rh-arrow">➔</span></div>
+      <div class="rh-step"><div class="rh-step-num">Step 3</div><h3>Prioritized Action</h3><p>Map the final residual score to <strong>five action tiers</strong> (Critical &rarr; Minimal), each with a defined response: escalation cadence, ownership level, and review frequency — enabling executives to allocate resources where they matter most.</p></div>
     </div>
 
     <!-- Step 1: Inherent Risk -->
@@ -499,7 +499,7 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
     <div class="rh-card">
       <div class="rh-card-hdr">Impact Scale — Detailed Criteria <span class="rh-badge">Assumption</span></div>
       <div class="rh-card-body">
-        <div class="rh-note" style="margin-bottom:16px;margin-top:0;"><strong>Assumption:</strong> These thresholds are starting points, not gospel. The financial ranges, SLA windows, and churn tiers below are illustrative — they need to be pressure-tested against actual loss data, queue volumes, and organizational risk appetite before anyone treats them as official.</div>
+        <div class="rh-note" style="margin-bottom:16px;margin-top:0;"><strong>Assumption:</strong> The thresholds below (e.g., financial loss ranges, case volume brackets, SLA windows, churn rate tiers) are illustrative and would need to be calibrated to the organization's actual risk appetite, historical data, and operational benchmarks before adoption.</div>
         <div style="overflow-x:auto;">
         <table class="rh-imp-table">
           <thead><tr><th rowspan="2" style="width:44px">Level</th><th rowspan="2" style="width:70px">Rating</th><th colspan="2" class="cat">Financial</th><th colspan="4" class="cat">Operational</th><th colspan="2" class="cat">Reputational</th><th colspan="2" class="cat">Third-Party</th><th class="cat">Regulatory</th></tr>
@@ -519,7 +519,7 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
     <div class="rh-card">
       <div class="rh-card-hdr">Likelihood Scale <span class="rh-badge">Assumption</span></div>
       <div class="rh-card-body">
-        <div class="rh-note" style="margin-bottom:16px;margin-top:0;"><strong>Assumption:</strong> The probability ranges and frequency windows below are illustrative. In practice, likelihood ratings should be anchored to actual incident history — how often has this type of event happened here, not just in theory.</div>
+        <div class="rh-note" style="margin-bottom:16px;margin-top:0;"><strong>Assumption:</strong> The probability ranges, frequency intervals, and historical occurrence criteria below are illustrative and would need to be validated against the organization's actual incident data and risk tolerance before adoption.</div>
         <table class="rh-scale-table"><thead><tr><th style="width:50px">Level</th><th style="width:140px">Rating</th><th>Probability</th><th>Frequency</th><th>History</th></tr></thead>
         <tbody>
           <tr><td><span class="rh-lbadge" style="background:#c00000">5</span></td><td><strong>Almost Certain</strong></td><td>≥95% chance</td><td>Once or more in 1 year</td><td>Occurs commonly</td></tr>
@@ -539,8 +539,8 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
           <div style="flex:0 0 240px;">
             <h4 style="font-size:15px;color:#1a2e5a;margin-bottom:8px;">How It Works</h4>
             <p style="font-size:14px;color:#555;line-height:1.6;margin-bottom:8px;"><strong style="font-size:14px;color:#1a2e5a;">Residual Risk Score = Inherent Risk Score × Control Maturity Level</strong></p>
-            <p style="font-size:14px;color:#555;line-height:1.6;margin-bottom:8px;">A <strong>Critical (5)</strong> inherent risk with <strong>Optimized (1)</strong> controls scores <strong>5</strong> — Minimal residual. Strong controls are doing their job.</p>
-            <p style="font-size:14px;color:#555;line-height:1.6;">A <strong>High (4)</strong> inherent risk with <strong>Initial (5)</strong> controls scores <strong>20</strong> — still High. That's where you need to invest.</p>
+            <p style="font-size:14px;color:#555;line-height:1.6;margin-bottom:8px;">A risk that is <strong>Critical (5)</strong> on an inherent basis but has <strong>Optimized (1)</strong> controls scores <strong>5</strong> — effectively <strong>Minimal</strong> residual risk.</p>
+            <p style="font-size:14px;color:#555;line-height:1.6;">Conversely, a <strong>High (4)</strong> inherent risk with <strong>Initial (5)</strong> controls scores <strong>20</strong> — <strong>High</strong> residual risk, requiring urgent investment in controls.</p>
           </div>
           <div style="flex:1;min-width:380px;">
             <div style="display:flex;align-items:stretch;">
@@ -549,7 +549,7 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
             </div>
           </div>
         </div>
-        <div class="rh-note" style="margin-top:24px;"><strong>Control Maturity</strong> isn't just about whether a control exists — it's about whether it actually works. A documented SOP nobody follows is Level 2 at best, not Level 3. Ratings should be pressure-tested with Risk Policy, Operations, Compliance, and Internal Audit before being locked in.</div>
+        <div class="rh-note" style="margin-top:24px;"><strong>Control Maturity</strong> considers the maturity and mitigating effectiveness of controls and other risk management processes as designed. Ratings should be validated with cross-functional stakeholders (Risk Policy, Operations, Compliance, Internal Audit) to ensure alignment.</div>
       </div>
     </div>
 
@@ -577,7 +577,7 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
         <div class="rh-action a-med"><div class="tier">Medium</div><div class="range">7 – 12</div><div class="act">Active monitoring, team-level ownership and remediation plan</div></div>
         <div class="rh-action a-low"><div class="tier">Low</div><div class="range">3 – 6</div><div class="act">Quarterly review, documented with assigned owner</div></div>
         <div class="rh-action a-min"><div class="tier">Minimal</div><div class="range">1 – 2</div><div class="act">Logged in risk register, revisited annually</div></div>
-        <div class="rh-note"><strong>Note:</strong> The gap between inherent and residual is where the real story lives. A Critical inherent risk that drops to Low after controls tells you something is working. A High inherent risk that stays High tells you it's not — and that needs to go somewhere.</div>
+        <div class="rh-note"><strong>Note:</strong> The delta between inherent and residual risk tells an important story. A risk that scores Critical on an inherent basis but Low on a residual basis demonstrates that strong controls are working effectively. Conversely, a high inherent risk paired with a low control maturity rating signals that immediate investment in controls is needed.</div>
       </div>
     </div>
 
@@ -586,8 +586,8 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
       <div class="rh-card-hdr">Governance &amp; Strategic Alignment</div>
       <div class="rh-card-body">
         <div class="rh-gov">
-          <div class="rh-gov-card"><h4>Cross-Functional Alignment</h4><p>Risk scores are only as good as the people who agreed on them. This framework needs input from Risk Policy, Risk Ops, Risk Analytics, Compliance, Internal Audit, and CAO — not just sign-off after the fact, but actual calibration conversations up front.</p></div>
-          <div class="rh-gov-card"><h4>Company-Wide Strategy &amp; Direction</h4><p>Risk priorities shift as the business changes. A framework built for today's product mix won't automatically fit a new market or a new product launch. The thresholds and tier definitions need to be revisited when strategy changes — not just at the annual review.</p></div>
+          <div class="rh-gov-card"><h4>Cross-Functional Alignment</h4><p>This risk prioritization framework must be developed and validated collaboratively across key stakeholder groups — including Risk Policy, Risk Operations, Risk Analytics, Compliance, Internal Audit, and the Chief Accounting Office (CAO).</p></div>
+          <div class="rh-gov-card"><h4>Company-Wide Strategy &amp; Direction</h4><p>Risk prioritization does not exist in isolation — it must be aligned with the company's broader strategic direction and business objectives. As the organization evolves (entering new markets, launching new products, scaling existing operations), the risk landscape shifts accordingly. This framework should be reviewed periodically to ensure that risk appetite thresholds, impact criteria, and monitoring priorities reflect current corporate strategy and executive leadership's direction for the business.</p></div>
         </div>
       </div>
     </div>
