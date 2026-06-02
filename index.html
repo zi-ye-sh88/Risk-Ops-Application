@@ -90,10 +90,10 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
 
   <div class="tab-nav">
     <button class="tab-btn active" onclick="switchTab('intro')"><span class="tab-dot"></span>👤 Self Intro</button>
+    <button class="tab-btn" onclick="switchTab('portfolio')"><span class="tab-dot"></span>💼 Portfolio</button>
     <button class="tab-btn" onclick="switchTab('risk')"><span class="tab-dot"></span>🗺️ Risk Discovery & Prioritization</button>
     <button class="tab-btn" onclick="switchTab('dashboard')"><span class="tab-dot"></span>📊 Risk Ops QA Dashboard</button>
     <button class="tab-btn" onclick="switchTab('monitoring')"><span class="tab-dot"></span>📋 Monthly Monitoring & Governance</button>
-    <button class="tab-btn" onclick="switchTab('portfolio')"><span class="tab-dot"></span>💼 Portfolio</button>
   </div>
 
   <div id="tab-intro" class="tab-content active">
@@ -370,6 +370,188 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
 
   </div><!-- end inner wrapper -->
   </div><!-- end tab-intro -->
+
+  <div id="tab-portfolio" class="tab-content">
+  <style>
+  #tab-portfolio { padding: 4px 0; }
+
+  :root{--dark:#1A2E5A;--blue:#365EBF;--green:#0CA750;--orange:#E86000;--light:#E8EDF7;--border:#DDE3F0;--bg:#F5F7FB;--text:#1A2E5A;--text2:#4A5568;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  #tab-portfolio body {font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);padding:24px;}
+  #tab-portfolio .page {max-width:1300px;margin:0 auto;}
+
+  /* Header */
+  #tab-portfolio .header {background:linear-gradient(135deg,var(--dark),var(--blue));color:#fff;border-radius:12px;padding:20px 28px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;}
+  #tab-portfolio .header h1 {font-size:22px;font-weight:700;margin-bottom:4px;}
+  #tab-portfolio .header p {font-size:12px;opacity:.75;}
+  #tab-portfolio .header .badge {background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:8px 16px;font-size:11px;color:#fff;text-align:center;}
+  #tab-portfolio .header .badge b {display:block;font-size:13px;color:#7FFFC4;}
+
+  /* Grid */
+  #tab-portfolio .grid {display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+
+  /* Story card */
+  #tab-portfolio .story {background:#fff;border-radius:12px;border:1px solid var(--border);overflow:hidden;}
+  #tab-portfolio .story-hdr {padding:14px 18px 12px;color:#fff;}
+  #tab-portfolio .story-num {font-size:10px;font-weight:700;letter-spacing:1px;opacity:.7;margin-bottom:4px;}
+  #tab-portfolio .story-title {font-size:16px;font-weight:700;line-height:1.3;}
+  #tab-portfolio .story-tag {background:var(--light);padding:8px 18px;font-size:11px;color:var(--text);font-style:italic;border-bottom:1px solid var(--border);}
+  #tab-portfolio .story-body {padding:16px 18px;}
+
+  /* STAR sections */
+  #tab-portfolio .star-section {margin-bottom:14px;}
+  #tab-portfolio .star-label {font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px;}
+  #tab-portfolio .star-label.situation {color:var(--blue);}
+  #tab-portfolio .star-label.role {color:var(--green);}
+  #tab-portfolio .star-label.actions {color:var(--dark);}
+  #tab-portfolio .star-label.result {color:#008A3E;}
+  #tab-portfolio .star-label.why {color:var(--orange);}
+  #tab-portfolio .star-text {font-size:12px;color:#333;line-height:1.65;}
+  #tab-portfolio .star-text ul {margin:4px 0 0 16px;}
+  #tab-portfolio .star-text li {margin-bottom:3px;}
+
+  /* Why box */
+  #tab-portfolio .why-box {background:#FFF8F0;border-left:3px solid var(--orange);border-radius:0 6px 6px 0;padding:8px 12px;}
+  #tab-portfolio .why-box .star-text {color:#7A4000;}
+
+  /* Comparison table */
+  #tab-portfolio .compare {background:#fff;border-radius:12px;border:1px solid var(--border);padding:18px;margin-bottom:20px;}
+  #tab-portfolio .compare h3 {font-size:13px;font-weight:700;color:var(--dark);margin-bottom:12px;}
+  #tab-portfolio table {width:100%;border-collapse:collapse;font-size:12px;}
+  #tab-portfolio th {background:var(--dark);color:#fff;padding:8px 12px;text-align:left;font-weight:600;font-size:11px;}
+  #tab-portfolio td {padding:8px 12px;border-bottom:1px solid var(--border);}
+  #tab-portfolio tr:nth-child(even) td {background:var(--bg);}
+  #tab-portfolio td:first-child {font-weight:600;color:var(--dark);width:120px;}
+
+  </style>
+  
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div>
+      <h1>Portfolio — Craft Demonstration</h1>
+      <p>Zi Ye, CPA &nbsp;·&nbsp; Risk Governance → Risk Ops QA Analyst &nbsp;·&nbsp; 2 Accomplishments</p>
+    </div>
+    <div class="badge">
+      <b>zi-ye-sh88.github.io/Risk-Ops-Application</b>
+      Full work product
+    </div>
+  </div>
+
+  <!-- Comparison table -->
+  <div class="compare">
+    <h3>At a Glance</h3>
+    <table>
+      <thead><tr><th></th><th>Story 1 — Teleperformance</th><th>Story 2 — RPA Bots Review</th></tr></thead>
+      <tbody>
+        <tr><td>Type</td><td>Built from zero into production</td><td>Independent audit + recommendations</td></tr>
+        <tr><td>Scale</td><td>Cross-functional, 3LOD alignment</td><td>Focused, self-directed</td></tr>
+        <tr><td>Deliverable</td><td>Formalized controls and vendor management framework</td><td>Report + flowchart still in use</td></tr>
+        <tr><td>Skill shown</td><td>Governance design, collaboration</td><td>Proactive process improvement</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Two stories -->
+  <div class="grid">
+
+    <!-- Story 1 -->
+    <div class="story">
+      <div class="story-hdr" style="background:#1A2E5A;">
+        <div class="story-num">STORY 1 OF 2</div>
+        <div class="story-title">Teleperformance Vendor Governance Framework</div>
+      </div>
+      <div class="story-tag">Built from zero &nbsp;·&nbsp; Cross-functional &nbsp;·&nbsp; Still live in production today</div>
+      <div class="story-body">
+
+        <div class="star-section">
+          <div class="star-label situation">Situation</div>
+          <div class="star-text">Risk Ops' first external vendor — no onboarding framework, no controls, no performance management, no offboarding. Nothing existed.</div>
+        </div>
+
+        <div class="star-section">
+          <div class="star-label role">My Role</div>
+          <div class="star-text">Led framework design, risk matrix, and 3LOD alignment. Dan Wilson operationalized the Ops-side process. Emilie provided oversight.</div>
+        </div>
+
+        <div class="star-section">
+          <div class="star-label actions">Actions</div>
+          <div class="star-text">
+            <ul>
+              <li>Mapped upstream coverage (Procurement, Compliance, Security) to avoid duplication</li>
+              <li>Designed full framework: onboarding, access management, training, QA, financial management, offboarding</li>
+              <li>Built risk matrix with industry-standard controls; finalized list with Ops team</li>
+              <li>Drove full risk assessment + 3LOD sign-off: CAO, CAT, Internal Audit</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="star-section">
+          <div class="star-label result">Result</div>
+          <div class="star-text">7–8 formalized controls across onboarding, QA, monitoring, and escalation. Clean 3LOD sign-off on time. Teleperformance launched on compliance queues. <strong>This framework serves as the foundation for any new workflows or case types assigned to Teleperformance — designed for long-term use, not a one-time project.</strong></div>
+        </div>
+
+        <div class="star-section">
+          <div class="why-box">
+            <div class="star-label why" style="margin-bottom:4px;">Why This</div>
+            <div class="star-text">Not process improvement — built from zero. That combination of governance design and 3LOD alignment is exactly what this role requires.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Story 2 -->
+    <div class="story">
+      <div class="story-hdr" style="background:#1A5276;">
+        <div class="story-num">STORY 2 OF 2</div>
+        <div class="story-title">RPA Bots End-to-End Process Review</div>
+      </div>
+      <div class="story-tag">Independent initiative &nbsp;·&nbsp; Full scope audit &nbsp;·&nbsp; Actionable output still in use</div>
+      <div class="story-body">
+
+        <div class="star-section">
+          <div class="star-label situation">Situation</div>
+          <div class="star-text">Bots running in production — nobody had done a structured review. Process was known to be messy but no one had examined it end to end. No documented gaps.</div>
+        </div>
+
+        <div class="star-section">
+          <div class="star-label role">My Role</div>
+          <div class="star-text">Self-initiated and independent. Designed the review scope, executed it, and delivered the output. Worked with Zach on findings.</div>
+        </div>
+
+        <div class="star-section">
+          <div class="star-label actions">Actions</div>
+          <div class="star-text">
+            <ul>
+              <li>Functionality testing: verified each bot against its PRD</li>
+              <li>QA & monitoring: found volume-only tracking, bot failures not triggering ban controls in iBoss, insufficient QA coverage rationale</li>
+              <li>Governance: no SLA for remediation, no peer review before deployment, unclear R&R across Ops, Analytics, and PD</li>
+              <li>Delivered evaluation report + R&R flowchart + change management process</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="star-section">
+          <div class="star-label result">Result</div>
+          <div class="star-text">Team had a clear, prioritized gap list for the first time. My flowchart is utilized to build the bot runbook — bots management process gaps now have direction and a structured path for remediation.</div>
+        </div>
+
+        <div class="star-section">
+          <div class="why-box">
+            <div class="star-label why" style="margin-bottom:4px;">Why This</div>
+            <div class="star-text">Did it independently — designed, executed, delivered. Proactive, self-directed QA work is exactly what this role is built around.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div><!-- end tab-portfolio -->
 
   <div id="tab-risk" class="tab-content">
     <style>
@@ -720,6 +902,7 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
   </div>
 
   </div><!-- end tab-dashboard -->
+
   <div id="tab-monitoring" class="tab-content">
 <!-- TAB: Monthly Monitoring & Governance -->
 <style>
@@ -1088,189 +1271,6 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
 
 </div><!-- end tab-monitoring -->
 
-  </div><!-- end tab-monitoring -->
-
-  <div id="tab-portfolio" class="tab-content">
-  <style>
-  #tab-portfolio { padding: 4px 0; }
-
-  :root{--dark:#1A2E5A;--blue:#365EBF;--green:#0CA750;--orange:#E86000;--light:#E8EDF7;--border:#DDE3F0;--bg:#F5F7FB;--text:#1A2E5A;--text2:#4A5568;}
-  *{box-sizing:border-box;margin:0;padding:0;}
-  #tab-portfolio body {font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);padding:24px;}
-  #tab-portfolio .page {max-width:1300px;margin:0 auto;}
-
-  /* Header */
-  #tab-portfolio .header {background:linear-gradient(135deg,var(--dark),var(--blue));color:#fff;border-radius:12px;padding:20px 28px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;}
-  #tab-portfolio .header h1 {font-size:22px;font-weight:700;margin-bottom:4px;}
-  #tab-portfolio .header p {font-size:12px;opacity:.75;}
-  #tab-portfolio .header .badge {background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:8px 16px;font-size:11px;color:#fff;text-align:center;}
-  #tab-portfolio .header .badge b {display:block;font-size:13px;color:#7FFFC4;}
-
-  /* Grid */
-  #tab-portfolio .grid {display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-
-  /* Story card */
-  #tab-portfolio .story {background:#fff;border-radius:12px;border:1px solid var(--border);overflow:hidden;}
-  #tab-portfolio .story-hdr {padding:14px 18px 12px;color:#fff;}
-  #tab-portfolio .story-num {font-size:10px;font-weight:700;letter-spacing:1px;opacity:.7;margin-bottom:4px;}
-  #tab-portfolio .story-title {font-size:16px;font-weight:700;line-height:1.3;}
-  #tab-portfolio .story-tag {background:var(--light);padding:8px 18px;font-size:11px;color:var(--text);font-style:italic;border-bottom:1px solid var(--border);}
-  #tab-portfolio .story-body {padding:16px 18px;}
-
-  /* STAR sections */
-  #tab-portfolio .star-section {margin-bottom:14px;}
-  #tab-portfolio .star-label {font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px;}
-  #tab-portfolio .star-label.situation {color:var(--blue);}
-  #tab-portfolio .star-label.role {color:var(--green);}
-  #tab-portfolio .star-label.actions {color:var(--dark);}
-  #tab-portfolio .star-label.result {color:#008A3E;}
-  #tab-portfolio .star-label.why {color:var(--orange);}
-  #tab-portfolio .star-text {font-size:12px;color:#333;line-height:1.65;}
-  #tab-portfolio .star-text ul {margin:4px 0 0 16px;}
-  #tab-portfolio .star-text li {margin-bottom:3px;}
-
-  /* Why box */
-  #tab-portfolio .why-box {background:#FFF8F0;border-left:3px solid var(--orange);border-radius:0 6px 6px 0;padding:8px 12px;}
-  #tab-portfolio .why-box .star-text {color:#7A4000;}
-
-  /* Comparison table */
-  #tab-portfolio .compare {background:#fff;border-radius:12px;border:1px solid var(--border);padding:18px;margin-bottom:20px;}
-  #tab-portfolio .compare h3 {font-size:13px;font-weight:700;color:var(--dark);margin-bottom:12px;}
-  #tab-portfolio table {width:100%;border-collapse:collapse;font-size:12px;}
-  #tab-portfolio th {background:var(--dark);color:#fff;padding:8px 12px;text-align:left;font-weight:600;font-size:11px;}
-  #tab-portfolio td {padding:8px 12px;border-bottom:1px solid var(--border);}
-  #tab-portfolio tr:nth-child(even) td {background:var(--bg);}
-  #tab-portfolio td:first-child {font-weight:600;color:var(--dark);width:120px;}
-
-  </style>
-  
-<div class="page">
-
-  <!-- Header -->
-  <div class="header">
-    <div>
-      <h1>Portfolio — Craft Demonstration</h1>
-      <p>Zi Ye, CPA &nbsp;·&nbsp; Risk Governance → Risk Ops QA Analyst &nbsp;·&nbsp; 2 Accomplishments</p>
-    </div>
-    <div class="badge">
-      <b>zi-ye-sh88.github.io/Risk-Ops-Application</b>
-      Full work product
-    </div>
-  </div>
-
-  <!-- Comparison table -->
-  <div class="compare">
-    <h3>At a Glance</h3>
-    <table>
-      <thead><tr><th></th><th>Story 1 — Teleperformance</th><th>Story 2 — RPA Bots Review</th></tr></thead>
-      <tbody>
-        <tr><td>Type</td><td>Built from zero into production</td><td>Independent audit + recommendations</td></tr>
-        <tr><td>Scale</td><td>Cross-functional, 3LOD alignment</td><td>Focused, self-directed</td></tr>
-        <tr><td>Deliverable</td><td>Formalized controls and vendor management framework</td><td>Report + flowchart still in use</td></tr>
-        <tr><td>Skill shown</td><td>Governance design, collaboration</td><td>Proactive process improvement</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- Two stories -->
-  <div class="grid">
-
-    <!-- Story 1 -->
-    <div class="story">
-      <div class="story-hdr" style="background:#1A2E5A;">
-        <div class="story-num">STORY 1 OF 2</div>
-        <div class="story-title">Teleperformance Vendor Governance Framework</div>
-      </div>
-      <div class="story-tag">Built from zero &nbsp;·&nbsp; Cross-functional &nbsp;·&nbsp; Still live in production today</div>
-      <div class="story-body">
-
-        <div class="star-section">
-          <div class="star-label situation">Situation</div>
-          <div class="star-text">Risk Ops' first external vendor — no onboarding framework, no controls, no performance management, no offboarding. Nothing existed.</div>
-        </div>
-
-        <div class="star-section">
-          <div class="star-label role">My Role</div>
-          <div class="star-text">Led framework design, risk matrix, and 3LOD alignment. Dan Wilson operationalized the Ops-side process. Emilie provided oversight.</div>
-        </div>
-
-        <div class="star-section">
-          <div class="star-label actions">Actions</div>
-          <div class="star-text">
-            <ul>
-              <li>Mapped upstream coverage (Procurement, Compliance, Security) to avoid duplication</li>
-              <li>Designed full framework: onboarding, access management, training, QA, financial management, offboarding</li>
-              <li>Built risk matrix with industry-standard controls; finalized list with Ops team</li>
-              <li>Drove full risk assessment + 3LOD sign-off: CAO, CAT, Internal Audit</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="star-section">
-          <div class="star-label result">Result</div>
-          <div class="star-text">7–8 formalized controls across onboarding, QA, monitoring, and escalation. Clean 3LOD sign-off on time. Teleperformance launched on compliance queues. <strong>This framework serves as the foundation for any new workflows or case types assigned to Teleperformance — designed for long-term use, not a one-time project.</strong></div>
-        </div>
-
-        <div class="star-section">
-          <div class="why-box">
-            <div class="star-label why" style="margin-bottom:4px;">Why This</div>
-            <div class="star-text">Not process improvement — built from zero. That combination of governance design and 3LOD alignment is exactly what this role requires.</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Story 2 -->
-    <div class="story">
-      <div class="story-hdr" style="background:#1A5276;">
-        <div class="story-num">STORY 2 OF 2</div>
-        <div class="story-title">RPA Bots End-to-End Process Review</div>
-      </div>
-      <div class="story-tag">Independent initiative &nbsp;·&nbsp; Full scope audit &nbsp;·&nbsp; Actionable output still in use</div>
-      <div class="story-body">
-
-        <div class="star-section">
-          <div class="star-label situation">Situation</div>
-          <div class="star-text">Bots running in production — nobody had done a structured review. Process was known to be messy but no one had examined it end to end. No documented gaps.</div>
-        </div>
-
-        <div class="star-section">
-          <div class="star-label role">My Role</div>
-          <div class="star-text">Self-initiated and independent. Designed the review scope, executed it, and delivered the output. Worked with Zach on findings.</div>
-        </div>
-
-        <div class="star-section">
-          <div class="star-label actions">Actions</div>
-          <div class="star-text">
-            <ul>
-              <li>Functionality testing: verified each bot against its PRD</li>
-              <li>QA & monitoring: found volume-only tracking, bot failures not triggering ban controls in iBoss, insufficient QA coverage rationale</li>
-              <li>Governance: no SLA for remediation, no peer review before deployment, unclear R&R across Ops, Analytics, and PD</li>
-              <li>Delivered evaluation report + R&R flowchart + change management process</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="star-section">
-          <div class="star-label result">Result</div>
-          <div class="star-text">Team had a clear, prioritized gap list for the first time. My flowchart is utilized to build the bot runbook — bots management process gaps now have direction and a structured path for remediation.</div>
-        </div>
-
-        <div class="star-section">
-          <div class="why-box">
-            <div class="star-label why" style="margin-bottom:4px;">Why This</div>
-            <div class="star-text">Did it independently — designed, executed, delivered. Proactive, self-directed QA work is exactly what this role is built around.</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</div>
-
-  </div><!-- end tab-portfolio -->
 
 </div>
 
