@@ -861,6 +861,14 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
     #tab-dashboard .db-filter-bar{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
     #tab-dashboard .db-filter-btn{padding:5px 12px;border-radius:99px;border:1px solid #DDE3F0;background:#fff;font-size:10px;font-weight:600;cursor:pointer;color:#4A5568;}
     #tab-dashboard .db-filter-btn.active{background:#365EBF;color:#fff;border-color:#365EBF;}
+    .db-kpi-mini{background:#F4F7FF;border-radius:8px;padding:10px 12px;text-align:center;}
+    .db-kpi-mini .db-kpi-label{font-size:10px;color:#6B7A99;font-weight:600;margin-bottom:4px;}
+    .db-kpi-mini .db-kpi-val{font-size:18px;font-weight:700;color:#1A2E5A;}
+    .db-q-btn{border:1px solid #C8D3EA;background:#fff;border-radius:20px;padding:5px 14px;font-size:12px;font-weight:600;color:#365EBF;cursor:pointer;transition:all .2s;}
+    .db-q-btn.active,.db-q-btn:hover{background:#365EBF;color:#fff;border-color:#365EBF;}
+    .db-pill.green{background:#E6F4E6;color:#2E7D32;}
+    .db-pill.amber{background:#FFF3E0;color:#E65100;}
+    .db-pill.red{background:#FFEBEE;color:#B71C1C;}
     #tab-dashboard .db-note{background:#E8EDF7;border-radius:8px;padding:9px 14px;font-size:10px;color:#4A5568;margin-bottom:14px;}
     #tab-dashboard .db-note strong{color:#1A2E5A;}
     #tab-dashboard td.br{color:#C00000;font-weight:700;}
@@ -881,9 +889,9 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
   <!-- EXEC -->
   <div id="db-layer-exec" class="db-layer active">
     <div class="db-rag-grid">
-      <div class="db-rag-card amber"><div class="db-label">Overall SLA Adherence</div><div class="db-value">71%</div><div class="db-sub"><span class="db-rdot amber"></span>Below 80% target</div></div>
-      <div class="db-rag-card red"><div class="db-label">Total Queue Backlog</div><div class="db-value">2,883</div><div class="db-sub"><span class="db-rdot red"></span>+22% vs last month</div></div>
       <div class="db-rag-card amber"><div class="db-label">Avg QA Score</div><div class="db-value">80%</div><div class="db-sub"><span class="db-rdot amber"></span>Target: 85%</div></div>
+      <div class="db-rag-card amber"><div class="db-label">Overall SLA Compliance</div><div class="db-value">71%</div><div class="db-sub"><span class="db-rdot amber"></span>Below 80% target</div></div>
+      <div class="db-rag-card red"><div class="db-label">Total Queue Backlog</div><div class="db-value">2,883</div><div class="db-sub"><span class="db-rdot red"></span>+22% vs last month</div></div>
       <div class="db-rag-card red"><div class="db-label">Bulk Closures MTD</div><div class="db-value">1,077</div><div class="db-sub"><span class="db-rdot red"></span>Unreviewed loss exposure</div></div>
     </div>
     <div class="db-card">
@@ -912,27 +920,61 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
 
   <!-- DRILL -->
   <div id="db-layer-drill" class="db-layer">
-    <div class="db-filter-bar">
-      <button class="db-filter-btn active" onclick="dbSetFilter(this)">All Queues</button>
-      <button class="db-filter-btn" onclick="dbSetFilter(this)">Instant Funding</button>
-      <button class="db-filter-btn" onclick="dbSetFilter(this)">Regular Funding</button>
-      <button class="db-filter-btn" onclick="dbSetFilter(this)">Anomaly Detection</button>
-      <button class="db-filter-btn" onclick="dbSetFilter(this)">Financial Limit</button>
-      <button class="db-filter-btn" onclick="dbSetFilter(this)">FDT</button>
+
+    <!-- 3-bubble filter -->
+    <div class="db-filter-bar" style="margin-bottom:16px;">
+      <button class="db-filter-btn active" onclick="dbDrillView(this,'all')">All Queues</button>
+      <button class="db-filter-btn" onclick="dbDrillView(this,'queue')">By Queue</button>
+      <button class="db-filter-btn" onclick="dbDrillView(this,'analyst')">By Analyst</button>
     </div>
-    <div class="db-card">
-      <div class="db-card-title">Agent-Level QA Score <span class="db-badge">Human Reviewers</span></div>
-      <div class="db-agent-grid" id="dbAgentGrid"></div>
+
+    <!-- VIEW: ALL QUEUES -->
+    <div id="drill-all">
+      <div class="db-card" style="margin-bottom:14px;">
+        <div class="db-card-title">Agent-Level QA Score <span class="db-badge">Human Reviewers</span></div>
+        <div class="db-agent-grid" id="dbAgentGrid"></div>
+      </div>
+      <div class="db-charts-grid">
+        <div class="db-card"><div class="db-card-title">Human vs Bot vs AI — QA Score</div><div class="db-chart-wrap"><canvas id="dbBotChart"></canvas></div></div>
+        <div class="db-card"><div class="db-card-title">QA Score Trend by Queue (6 Months)</div><div class="db-chart-wrap"><canvas id="dbSlaAgentChart"></canvas></div></div>
+      </div>
+      <div class="db-charts-grid">
+        <div class="db-card"><div class="db-card-title">Case Decision Time Distribution (hrs)</div><div class="db-chart-wrap"><canvas id="dbDecisionTimeChart"></canvas></div></div>
+        <div class="db-card"><div class="db-card-title">Decision Distribution by Queue (%)</div><div class="db-chart-wrap"><canvas id="dbDecisionDistChart"></canvas></div></div>
+      </div>
+      <div class="db-note"><strong>Note:</strong> Regular Funding has the highest backlog at 1,440 cases with 463 bulk closures MTD — the largest unreviewed loss exposure across all queues. Instant Funding also RED at SLA 61%, backlog 487. Both queues require immediate escalation to Ops leadership.</div>
     </div>
-    <div class="db-charts-grid">
-      <div class="db-card"><div class="db-card-title">Human vs Bot vs AI — QA Score</div><div class="db-chart-wrap"><canvas id="dbBotChart"></canvas></div></div>
-      <div class="db-card"><div class="db-card-title">QA Score Trend by Queue (6 Months)</div><div class="db-chart-wrap"><canvas id="dbSlaAgentChart"></canvas></div></div>
+
+    <!-- VIEW: BY QUEUE -->
+    <div id="drill-queue" style="display:none;">
+      <div class="db-filter-bar" style="margin-bottom:12px;gap:6px;">
+        <button class="db-q-btn active" onclick="dbSelectQueue(this,'IF')">Instant Funding</button>
+        <button class="db-q-btn" onclick="dbSelectQueue(this,'RF')">Regular Funding</button>
+        <button class="db-q-btn" onclick="dbSelectQueue(this,'AD')">Anomaly Detection</button>
+        <button class="db-q-btn" onclick="dbSelectQueue(this,'FL')">Financial Limit</button>
+        <button class="db-q-btn" onclick="dbSelectQueue(this,'FDT')">FDT</button>
+      </div>
+      <div id="queue-detail-panel">
+        <!-- Rendered by JS -->
+      </div>
     </div>
-    <div class="db-charts-grid">
-      <div class="db-card"><div class="db-card-title">Case Decision Time Distribution (hrs)</div><div class="db-chart-wrap"><canvas id="dbDecisionTimeChart"></canvas></div></div>
-      <div class="db-card"><div class="db-card-title">Decision Distribution by Queue (%)</div><div class="db-chart-wrap"><canvas id="dbDecisionDistChart"></canvas></div></div>
+
+    <!-- VIEW: BY ANALYST -->
+    <div id="drill-analyst" style="display:none;">
+      <div class="db-card" style="margin-bottom:14px;">
+        <div class="db-card-title">Analyst Performance Summary <span class="db-badge">May 2026</span></div>
+        <table class="db-table">
+          <thead><tr><th>Analyst</th><th>Queue</th><th>Cases Reviewed</th><th>QA Score</th><th>SLA %</th><th>Avg Decision Time</th><th>Status</th></tr></thead>
+          <tbody id="analystTableBody"></tbody>
+        </table>
+      </div>
+      <div class="db-charts-grid">
+        <div class="db-card"><div class="db-card-title">QA Score by Analyst</div><div class="db-chart-wrap"><canvas id="dbAnalystQaChart"></canvas></div></div>
+        <div class="db-card"><div class="db-card-title">SLA % by Analyst</div><div class="db-chart-wrap"><canvas id="dbAnalystSlaChart"></canvas></div></div>
+      </div>
+      <div class="db-note"><strong>Flagged:</strong> Agent 3 (Instant Funding · FDT) — QA 68%, SLA 61%. Agent 2 (Regular Funding · Anomaly Detection) — QA 72%, SLA 63%. Both require immediate coaching.</div>
     </div>
-    <div class="db-note"><strong>Agents flagged:</strong> Agent 3 (Instant Funding) — QA 68%, SLA 61%. Agent 2 (Regular Funding) — QA 72%, SLA 63%. Both require coaching + SOP review.</div>
+
   </div>
 
   </div><!-- end tab-dashboard -->
@@ -1322,7 +1364,113 @@ function dbSwitchLayer(id) {
   document.getElementById('db-layer-' + id).classList.add('active');
   event.target.classList.add('active');
   setTimeout(dbInitCharts, 50);
+  setTimeout(dbInitAllCharts, 100);
 }
+// ── DRILL-DOWN VIEW SWITCHER ──────────────────────────────
+function dbDrillView(btn, view) {
+  document.querySelectorAll('#db-layer-drill .db-filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('drill-all').style.display     = view==='all'      ? '' : 'none';
+  document.getElementById('drill-queue').style.display   = view==='queue'    ? '' : 'none';
+  document.getElementById('drill-analyst').style.display = view==='analyst'  ? '' : 'none';
+  if (view==='all')      dbInitAllCharts();
+  if (view==='queue')    { dbSelectQueue(document.querySelector('.db-q-btn.active')||document.querySelector('.db-q-btn'), 'IF'); }
+  if (view==='analyst')  dbInitAnalystCharts();
+}
+
+// ── BY QUEUE ─────────────────────────────────────────────
+const dbQueueData = {
+  IF:  { label:'Instant Funding',  status:'RED',   sla:61, qa:78, dt:38, backlog:487, bulk:312, approved:68, pending:18, rejected:14,
+         trend:[84,82,80,79,77,78], agents:['Agent 1','Agent 3','Agent 6'], agentQa:[92,68,91], agentSla:[85,61,93] },
+  RF:  { label:'Regular Funding',  status:'RED',   sla:58, qa:75, dt:42, backlog:1440,bulk:463, approved:62, pending:22, rejected:16,
+         trend:[85,83,82,80,78,75], agents:['Agent 2','Agent 4'], agentQa:[72,80], agentSla:[63,74] },
+  AD:  { label:'Anomaly Detection',status:'AMBER', sla:74, qa:80, dt:29, backlog:210, bulk:88,  approved:65, pending:21, rejected:14,
+         trend:[86,85,83,82,81,80], agents:['Agent 2','Agent 4'], agentQa:[72,80], agentSla:[63,74] },
+  FL:  { label:'Financial Limit',  status:'GREEN', sla:83, qa:89, dt:22, backlog:145, bulk:52,  approved:80, pending:12, rejected:8,
+         trend:[90,91,90,89,90,89], agents:['Agent 1','Agent 5','Agent 6'], agentQa:[92,88,91], agentSla:[85,88,93] },
+  FDT: { label:'FDT',              status:'GREEN', sla:91, qa:93, dt:18, backlog:98,  bulk:34,  approved:70, pending:16, rejected:14,
+         trend:[87,86,85,84,83,82], agents:['Agent 3','Agent 5'], agentQa:[68,88], agentSla:[61,88] }
+};
+let dbQChart1=null, dbQChart2=null, dbQChart3=null;
+
+function dbSelectQueue(btn, key) {
+  document.querySelectorAll('.db-q-btn').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  const q = dbQueueData[key];
+  const sc = q.status==='RED'?'#C00000':q.status==='AMBER'?'#D4A800':'#5BA829';
+  const panel = document.getElementById('queue-detail-panel');
+  panel.innerHTML = `
+    <div class="db-card" style="margin-bottom:12px;">
+      <div class="db-card-title">${q.label} <span class="db-pill ${q.status.toLowerCase()}" style="font-size:10px;">${q.status}</span></div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:10px;">
+        <div class="db-kpi-mini"><div class="db-kpi-label">QA Score</div><div class="db-kpi-val" style="color:${q.qa>=85?'#5BA829':q.qa>=75?'#D4A800':'#C00000'}">${q.qa}%</div></div>
+        <div class="db-kpi-mini"><div class="db-kpi-label">SLA %</div><div class="db-kpi-val" style="color:${q.sla>=75?'#5BA829':q.sla>=65?'#D4A800':'#C00000'}">${q.sla}%</div></div>
+        <div class="db-kpi-mini"><div class="db-kpi-label">Avg Decision Time</div><div class="db-kpi-val">${q.dt} hrs</div></div>
+        <div class="db-kpi-mini"><div class="db-kpi-label">Backlog</div><div class="db-kpi-val">${q.backlog}</div></div>
+        <div class="db-kpi-mini"><div class="db-kpi-label">Bulk Closures</div><div class="db-kpi-val" style="color:${q.bulk>200?'#C00000':'#5BA829'}">${q.bulk}</div></div>
+      </div>
+    </div>
+    <div class="db-charts-grid">
+      <div class="db-card"><div class="db-card-title">QA Score Trend (6 Months)</div><div class="db-chart-wrap"><canvas id="dbQChart1"></canvas></div></div>
+      <div class="db-card"><div class="db-card-title">Decision Distribution</div><div class="db-chart-wrap"><canvas id="dbQChart2"></canvas></div></div>
+    </div>
+    <div class="db-card" style="margin-top:12px;">
+      <div class="db-card-title">Analysts on this Queue</div>
+      <table class="db-table"><thead><tr><th>Analyst</th><th>QA Score</th><th>SLA %</th><th>Status</th></tr></thead><tbody>
+        ${q.agents.map((a,i)=>`<tr><td><strong>${a}</strong></td><td style="color:${q.agentQa[i]>=85?'#5BA829':q.agentQa[i]>=75?'#D4A800':'#C00000'}">${q.agentQa[i]}%</td><td style="color:${q.agentSla[i]>=75?'#5BA829':q.agentSla[i]>=65?'#D4A800':'#C00000'}">${q.agentSla[i]}%</td><td><span class="db-pill ${q.agentQa[i]>=85?'green':q.agentQa[i]>=75?'amber':'red'}">${q.agentQa[i]>=85?'ON TRACK':q.agentQa[i]>=75?'WATCH':'FLAG'}</span></td></tr>`).join('')}
+      </tbody></table>
+    </div>`;
+  const dO2 = {responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{font:{size:9}},grid:{display:false}},y:{ticks:{font:{size:9}}}}};
+  if(dbQChart1) dbQChart1.destroy();
+  if(dbQChart2) dbQChart2.destroy();
+  dbQChart1 = new Chart(document.getElementById('dbQChart1'),{type:'line',data:{labels:['Dec','Jan','Feb','Mar','Apr','May'],datasets:[{data:q.trend,borderColor:sc,fill:false,tension:.4,pointRadius:3}]},options:{...dO2,scales:{...dO2.scales,y:{min:60,max:100,ticks:{font:{size:9},callback:v=>v+'%'}}}}});
+  dbQChart2 = new Chart(document.getElementById('dbQChart2'),{type:'doughnut',data:{labels:['Approved','Pending','Rejected'],datasets:[{data:[q.approved,q.pending,q.rejected],backgroundColor:['#5BA829','#D4A800','#C00000']}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:9}}}}}});
+}
+
+// ── BY ANALYST ────────────────────────────────────────────
+const dbAnalysts = [
+  {name:'Agent 1', queue:'Instant Funding · Financial Limit',   cases:148, qa:92, sla:85, dt:31, status:'ok'},
+  {name:'Agent 2', queue:'Regular Funding · Anomaly Detection', cases:162, qa:72, sla:63, dt:44, status:'flag'},
+  {name:'Agent 3', queue:'Instant Funding · FDT',               cases:139, qa:68, sla:61, dt:39, status:'flag'},
+  {name:'Agent 4', queue:'Anomaly Detection · Regular Funding', cases:121, qa:80, sla:74, dt:28, status:'watch'},
+  {name:'Agent 5', queue:'FDT · Financial Limit',               cases:98,  qa:88, sla:88, dt:19, status:'ok'},
+  {name:'Agent 6', queue:'Financial Limit · Instant Funding',   cases:110, qa:91, sla:93, dt:20, status:'ok'},
+];
+let dbAChart1=null, dbAChart2=null;
+
+function dbInitAnalystCharts() {
+  const tbody = document.getElementById('analystTableBody');
+  tbody.innerHTML = dbAnalysts.map(a=>`
+    <tr>
+      <td><strong>${a.name}</strong></td>
+      <td>${a.queue}</td>
+      <td>${a.cases}</td>
+      <td style="color:${a.qa>=85?'#5BA829':a.qa>=75?'#D4A800':'#C00000'}">${a.qa}%</td>
+      <td style="color:${a.sla>=75?'#5BA829':a.sla>=65?'#D4A800':'#C00000'}">${a.sla}%</td>
+      <td>${a.dt} hrs</td>
+      <td><span class="db-pill ${a.status==='ok'?'green':a.status==='watch'?'amber':'red'}">${a.status==='ok'?'ON TRACK':a.status==='watch'?'WATCH':'FLAG'}</span></td>
+    </tr>`).join('');
+  const dO3 = {responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{font:{size:9}},grid:{display:false}},y:{ticks:{font:{size:9}}}}};
+  const names = dbAnalysts.map(a=>a.name);
+  const qaColors = dbAnalysts.map(a=>a.qa>=85?'#5BA829':a.qa>=75?'#D4A800':'#C00000');
+  const slaColors = dbAnalysts.map(a=>a.sla>=75?'#5BA829':a.sla>=65?'#D4A800':'#C00000');
+  if(dbAChart1) dbAChart1.destroy();
+  if(dbAChart2) dbAChart2.destroy();
+  dbAChart1 = new Chart(document.getElementById('dbAnalystQaChart'),{type:'bar',data:{labels:names,datasets:[{data:dbAnalysts.map(a=>a.qa),backgroundColor:qaColors,borderRadius:4}]},options:{...dO3,scales:{...dO3.scales,y:{min:60,max:100,ticks:{font:{size:9},callback:v=>v+'%'}}}}});
+  dbAChart2 = new Chart(document.getElementById('dbAnalystSlaChart'),{type:'bar',data:{labels:names,datasets:[{data:dbAnalysts.map(a=>a.sla),backgroundColor:slaColors,borderRadius:4}]},options:{...dO3,scales:{...dO3.scales,y:{min:50,max:100,ticks:{font:{size:9},callback:v=>v+'%'}}}}});
+}
+
+// ── ALL QUEUES CHARTS ─────────────────────────────────────
+let dbAllC1=null, dbAllC2=null;
+function dbInitAllCharts() {
+  if(document.getElementById('dbAllQaChart') && !dbAllC1) {
+    const dO4={responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{font:{size:9}},grid:{display:false}},y:{ticks:{font:{size:9}}}}};
+    const ql=['Instant Funding','Regular Funding','Anomaly Det.','Financial Limit','FDT'];
+    dbAllC1=new Chart(document.getElementById('dbAllQaChart'),{type:'bar',data:{labels:ql,datasets:[{data:[78,75,80,89,93],backgroundColor:['#C00000','#C00000','#D4A800','#5BA829','#5BA829'],borderRadius:4}]},options:{...dO4,scales:{...dO4.scales,y:{min:60,max:100,ticks:{font:{size:9},callback:v=>v+'%'}}}}});
+    dbAllC2=new Chart(document.getElementById('dbAllSlaChart'),{type:'bar',data:{labels:ql,datasets:[{data:[61,58,74,83,91],backgroundColor:['#C00000','#C00000','#D4A800','#5BA829','#5BA829'],borderRadius:4}]},options:{...dO4,scales:{...dO4.scales,y:{min:40,max:100,ticks:{font:{size:9},callback:v=>v+'%'}}}}});
+  }
+}
+
 function dbSetFilter(btn) {
   document.querySelectorAll('#tab-dashboard .db-filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
@@ -1384,12 +1532,12 @@ function dbInitCharts() {
 
 // Agent cards
 const dbAgents=[
-  {name:"Agent 1",role:"Human Reviewer",queue:"Instant Funding",qa:92,sla:85,status:"ok"},
-  {name:"Agent 2",role:"Human Reviewer",queue:"Regular Funding",qa:72,sla:63,status:"flag"},
-  {name:"Agent 3",role:"Human Reviewer",queue:"Instant Funding",qa:68,sla:61,status:"flag"},
-  {name:"Agent 4",role:"Human Reviewer",queue:"Anomaly Detection",qa:80,sla:74,status:"watch"},
-  {name:"Agent 5",role:"Human Reviewer",queue:"FDT",qa:88,sla:88,status:"ok"},
-  {name:"Agent 6",role:"Human Reviewer",queue:"Financial Limit",qa:91,sla:93,status:"ok"},
+  {name:"Agent 1",role:"Human Reviewer",queue:"Instant Funding · Financial Limit",qa:92,sla:85,status:"ok"},
+  {name:"Agent 2",role:"Human Reviewer",queue:"Regular Funding · Anomaly Detection",qa:72,sla:63,status:"flag"},
+  {name:"Agent 3",role:"Human Reviewer",queue:"Instant Funding · FDT",qa:68,sla:61,status:"flag"},
+  {name:"Agent 4",role:"Human Reviewer",queue:"Anomaly Detection · Regular Funding",qa:80,sla:74,status:"watch"},
+  {name:"Agent 5",role:"Human Reviewer",queue:"FDT · Financial Limit",qa:88,sla:88,status:"ok"},
+  {name:"Agent 6",role:"Human Reviewer",queue:"Financial Limit · Instant Funding",qa:91,sla:93,status:"ok"},
 ];
 function dbBarColor(v,inv=false){if(inv)return v<=8?'#5BA829':v<=15?'#D4A800':'#C00000';return v>=85?'#5BA829':v>=75?'#D4A800':'#C00000';}
 const dbGrid=document.getElementById('dbAgentGrid');
