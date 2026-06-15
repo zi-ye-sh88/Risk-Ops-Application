@@ -546,9 +546,9 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
     <div class="story-cell">
       <div class="star-label actions">Actions</div>
       <div class="star-text"><ul>
-        <li>Mapped upstream coverage (Procurement, Compliance, Security) to avoid duplication</li>
         <li>Designed full framework: onboarding, access management, training, QA, financial management, offboarding</li>
         <li>Built risk matrix with industry-standard controls; finalized list with Ops team</li>
+        <li>Mapped upstream coverage (Procurement, Compliance, Security) to avoid duplication</li>
         <li>Drove full risk assessment + 3LOD sign-off: CAO, CAT, Internal Audit</li>
       </ul></div>
     </div>
@@ -908,7 +908,7 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
       </table>
     </div>
     <div class="db-charts-grid">
-      <div class="db-card"><div class="db-card-title">SLA Adherence by Queue (%)</div><div class="db-chart-wrap"><canvas id="dbSlaChart"></canvas></div></div>
+      <div class="db-card"><div class="db-card-title">SLA Compliance by Queue (%)</div><div class="db-chart-wrap"><canvas id="dbSlaChart"></canvas></div></div>
       <div class="db-card"><div class="db-card-title">Backlog Trend by Queue (6 Months)</div><div class="db-chart-wrap"><canvas id="dbBacklogChart"></canvas></div></div>
     </div>
     <div class="db-charts-grid">
@@ -1243,7 +1243,7 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
       <div class="memo-h2">May 2026 — KPI Scorecard</div>
       <div class="mn-memo-kpi-grid">
         <div class="mn-kpi amber"><div class="kl">QA Score</div><div class="kv">75%</div><div class="kt">Target ≥ 80% · ⚠ Below</div></div>
-        <div class="mn-kpi red"><div class="kl">SLA Adherence</div><div class="kv">63%</div><div class="kt">Target ≥ 75% · 🔴 RED</div></div>
+        <div class="mn-kpi red"><div class="kl">SLA Compliance</div><div class="kv">63%</div><div class="kt">Target ≥ 75% · 🔴 RED</div></div>
       </div>
       <p class="memo-p"><strong>Sample:</strong> 30 cases from 1,440 worked in May 2026. Data from iBoss — pick-up &amp; decision timestamps, analyst notes and decisions. Reconciled against data lake — no discrepancy.</p>
       <!-- Trend -->
@@ -1548,7 +1548,7 @@ dbAgents.forEach(a=>{dbGrid.innerHTML+=`
     <div class="db-agent-role">${a.role} · ${a.queue}</div>
     <div class="db-metric-row"><span class="db-metric-label">QA Score</span><span class="db-metric-val" style="color:${dbBarColor(a.qa)}">${a.qa}%</span></div>
     <div class="db-bar-bg"><div class="db-bar-fill" style="width:${a.qa}%;background:${dbBarColor(a.qa)}"></div></div>
-    <div class="db-metric-row"><span class="db-metric-label">SLA Adherence</span><span class="db-metric-val" style="color:${dbBarColor(a.sla)}">${a.sla}%</span></div>
+    <div class="db-metric-row"><span class="db-metric-label">SLA Compliance</span><span class="db-metric-val" style="color:${dbBarColor(a.sla)}">${a.sla}%</span></div>
     <div class="db-bar-bg"><div class="db-bar-fill" style="width:${a.sla}%;background:${dbBarColor(a.sla)}"></div></div>
   </div>`;});
 
