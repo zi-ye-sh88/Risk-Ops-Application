@@ -961,8 +961,72 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
 
     <!-- VIEW: BY ANALYST -->
     <div id="drill-analyst" style="display:none;">
+
+      <!-- Filter bar -->
+      <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:12px;">
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#6B7A99;margin-bottom:4px;">ANALYST</div>
+          <select id="af-analyst" onchange="dbFilterAnalysts()" style="width:100%;font-size:12px;padding:5px 8px;border:1px solid #DDE3F0;border-radius:6px;color:#1A2E5A;">
+            <option value="">All</option>
+            <option value="Agent 1">Agent 1</option>
+            <option value="Agent 2">Agent 2</option>
+            <option value="Agent 3">Agent 3</option>
+            <option value="Agent 4">Agent 4</option>
+            <option value="Agent 5">Agent 5</option>
+            <option value="Agent 6">Agent 6</option>
+          </select>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#6B7A99;margin-bottom:4px;">QUEUE</div>
+          <select id="af-queue" onchange="dbFilterAnalysts()" style="width:100%;font-size:12px;padding:5px 8px;border:1px solid #DDE3F0;border-radius:6px;color:#1A2E5A;">
+            <option value="">All</option>
+            <option value="Instant Funding">Instant Funding</option>
+            <option value="Regular Funding">Regular Funding</option>
+            <option value="Anomaly Detection">Anomaly Detection</option>
+            <option value="Financial Limit">Financial Limit</option>
+            <option value="FDT">FDT</option>
+          </select>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#6B7A99;margin-bottom:4px;">MIN CASES</div>
+          <select id="af-cases" onchange="dbFilterAnalysts()" style="width:100%;font-size:12px;padding:5px 8px;border:1px solid #DDE3F0;border-radius:6px;color:#1A2E5A;">
+            <option value="0">Any</option>
+            <option value="100">≥ 100</option>
+            <option value="120">≥ 120</option>
+            <option value="140">≥ 140</option>
+          </select>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#6B7A99;margin-bottom:4px;">QA SCORE</div>
+          <select id="af-qa" onchange="dbFilterAnalysts()" style="width:100%;font-size:12px;padding:5px 8px;border:1px solid #DDE3F0;border-radius:6px;color:#1A2E5A;">
+            <option value="0">Any</option>
+            <option value="low">Below 75% 🔴</option>
+            <option value="mid">75–84% ⚠️</option>
+            <option value="high">≥ 85% ✅</option>
+          </select>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#6B7A99;margin-bottom:4px;">SLA %</div>
+          <select id="af-sla" onchange="dbFilterAnalysts()" style="width:100%;font-size:12px;padding:5px 8px;border:1px solid #DDE3F0;border-radius:6px;color:#1A2E5A;">
+            <option value="0">Any</option>
+            <option value="low">Below 65% 🔴</option>
+            <option value="mid">65–74% ⚠️</option>
+            <option value="high">≥ 75% ✅</option>
+          </select>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#6B7A99;margin-bottom:4px;">STATUS</div>
+          <select id="af-status" onchange="dbFilterAnalysts()" style="width:100%;font-size:12px;padding:5px 8px;border:1px solid #DDE3F0;border-radius:6px;color:#1A2E5A;">
+            <option value="">All</option>
+            <option value="flag">🔴 Flagged</option>
+            <option value="watch">⚠️ Watch</option>
+            <option value="ok">✅ On Track</option>
+          </select>
+        </div>
+      </div>
+
       <div class="db-card" style="margin-bottom:14px;">
-        <div class="db-card-title">Analyst Performance Summary <span class="db-badge">May 2026</span></div>
+        <div class="db-card-title">Analyst Performance Summary <span class="db-badge">May 2026</span> <span id="af-count" style="font-size:11px;color:#6B7A99;font-weight:400;margin-left:8px;"></span></div>
         <table class="db-table">
           <thead><tr><th>Analyst</th><th>Queue</th><th>Cases Reviewed</th><th>QA Score</th><th>SLA %</th><th>Avg Decision Time</th><th>Status</th></tr></thead>
           <tbody id="analystTableBody"></tbody>
@@ -1438,9 +1502,30 @@ const dbAnalysts = [
 ];
 let dbAChart1=null, dbAChart2=null;
 
-function dbInitAnalystCharts() {
+function dbFilterAnalysts() {
+  const fAnalyst = document.getElementById('af-analyst').value;
+  const fQueue   = document.getElementById('af-queue').value;
+  const fCases   = parseInt(document.getElementById('af-cases').value) || 0;
+  const fQa      = document.getElementById('af-qa').value;
+  const fSla     = document.getElementById('af-sla').value;
+  const fStatus  = document.getElementById('af-status').value;
+
+  const filtered = dbAnalysts.filter(a => {
+    if (fAnalyst && a.name !== fAnalyst) return false;
+    if (fQueue && !a.queue.includes(fQueue)) return false;
+    if (a.cases < fCases) return false;
+    if (fQa === 'low' && a.qa >= 75) return false;
+    if (fQa === 'mid' && (a.qa < 75 || a.qa >= 85)) return false;
+    if (fQa === 'high' && a.qa < 85) return false;
+    if (fSla === 'low' && a.sla >= 65) return false;
+    if (fSla === 'mid' && (a.sla < 65 || a.sla >= 75)) return false;
+    if (fSla === 'high' && a.sla < 75) return false;
+    if (fStatus && a.status !== fStatus) return false;
+    return true;
+  });
+
   const tbody = document.getElementById('analystTableBody');
-  tbody.innerHTML = dbAnalysts.map(a=>`
+  tbody.innerHTML = filtered.length ? filtered.map(a => `
     <tr>
       <td><strong>${a.name}</strong></td>
       <td>${a.queue}</td>
@@ -1449,15 +1534,26 @@ function dbInitAnalystCharts() {
       <td style="color:${a.sla>=75?'#5BA829':a.sla>=65?'#D4A800':'#C00000'}">${a.sla}%</td>
       <td>${a.dt} hrs</td>
       <td><span class="db-pill ${a.status==='ok'?'green':a.status==='watch'?'amber':'red'}">${a.status==='ok'?'ON TRACK':a.status==='watch'?'WATCH':'FLAG'}</span></td>
-    </tr>`).join('');
+    </tr>`).join('') : '<tr><td colspan="7" style="text-align:center;color:#999;padding:20px;">No analysts match the selected filters.</td></tr>';
+
+  const count = document.getElementById('af-count');
+  if (count) count.textContent = `Showing ${filtered.length} of ${dbAnalysts.length} analysts`;
+
+  // Update charts with filtered data
+  const names = filtered.map(a => a.name);
+  const qaColors = filtered.map(a => a.qa>=85?'#5BA829':a.qa>=75?'#D4A800':'#C00000');
+  const slaColors = filtered.map(a => a.sla>=75?'#5BA829':a.sla>=65?'#D4A800':'#C00000');
   const dO3 = {responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{font:{size:9}},grid:{display:false}},y:{ticks:{font:{size:9}}}}};
-  const names = dbAnalysts.map(a=>a.name);
-  const qaColors = dbAnalysts.map(a=>a.qa>=85?'#5BA829':a.qa>=75?'#D4A800':'#C00000');
-  const slaColors = dbAnalysts.map(a=>a.sla>=75?'#5BA829':a.sla>=65?'#D4A800':'#C00000');
   if(dbAChart1) dbAChart1.destroy();
   if(dbAChart2) dbAChart2.destroy();
-  dbAChart1 = new Chart(document.getElementById('dbAnalystQaChart'),{type:'bar',data:{labels:names,datasets:[{data:dbAnalysts.map(a=>a.qa),backgroundColor:qaColors,borderRadius:4}]},options:{...dO3,scales:{...dO3.scales,y:{min:60,max:100,ticks:{font:{size:9},callback:v=>v+'%'}}}}});
-  dbAChart2 = new Chart(document.getElementById('dbAnalystSlaChart'),{type:'bar',data:{labels:names,datasets:[{data:dbAnalysts.map(a=>a.sla),backgroundColor:slaColors,borderRadius:4}]},options:{...dO3,scales:{...dO3.scales,y:{min:50,max:100,ticks:{font:{size:9},callback:v=>v+'%'}}}}});
+  if(filtered.length) {
+    dbAChart1 = new Chart(document.getElementById('dbAnalystQaChart'),{type:'bar',data:{labels:names,datasets:[{data:filtered.map(a=>a.qa),backgroundColor:qaColors,borderRadius:4}]},options:{...dO3,scales:{...dO3.scales,y:{min:60,max:100,ticks:{font:{size:9},callback:v=>v+'%'}}}}});
+    dbAChart2 = new Chart(document.getElementById('dbAnalystSlaChart'),{type:'bar',data:{labels:names,datasets:[{data:filtered.map(a=>a.sla),backgroundColor:slaColors,borderRadius:4}]},options:{...dO3,scales:{...dO3.scales,y:{min:50,max:100,ticks:{font:{size:9},callback:v=>v+'%'}}}}});
+  }
+}
+
+function dbInitAnalystCharts() {
+  dbFilterAnalysts();
 }
 
 // ── ALL QUEUES CHARTS ─────────────────────────────────────
