@@ -75,6 +75,28 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
 @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(0.8);}}
 .tab-content{display:none;}
 .tab-content.active{display:block;}
+#tab-appendix{padding:24px 0;}
+.resume-wrap{max-width:820px;margin:0 auto;background:#fff;border:1px solid #DDE3F0;border-radius:12px;padding:48px 56px;font-family:'Arial',sans-serif;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+.resume-name{font-size:26px;font-weight:700;color:#1A2E5A;letter-spacing:0.02em;margin:0 0 4px;}
+.resume-contact{font-size:13px;color:#4A5568;margin:0 0 20px;}
+.resume-contact span{margin:0 8px;color:#CBD5E0;}
+.resume-divider{border:none;border-top:2px solid #1A2E5A;margin:0 0 18px;}
+.resume-section-title{font-size:12px;font-weight:700;letter-spacing:0.12em;color:#1A2E5A;text-transform:uppercase;margin:0 0 12px;}
+.resume-job{margin-bottom:20px;}
+.resume-job-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px;}
+.resume-company{font-size:14px;font-weight:700;color:#1A2E5A;}
+.resume-dates{font-size:12px;color:#6B7A99;font-style:italic;}
+.resume-title{font-size:13px;font-weight:600;color:#365EBF;margin:0 0 6px;}
+.resume-bullets{margin:0;padding-left:16px;}
+.resume-bullets li{font-size:12.5px;color:#2D3748;line-height:1.65;margin-bottom:3px;}
+.resume-edu{margin-bottom:8px;}
+.resume-edu-header{display:flex;justify-content:space-between;align-items:baseline;}
+.resume-edu-school{font-size:13px;font-weight:700;color:#1A2E5A;}
+.resume-edu-date{font-size:12px;color:#6B7A99;font-style:italic;}
+.resume-edu-degree{font-size:12.5px;color:#2D3748;margin:2px 0 0;}
+.resume-skills-text{font-size:12.5px;color:#2D3748;line-height:1.7;}
+.resume-section{margin-bottom:22px;}
+.resume-appendix-label{text-align:center;font-size:11px;color:#9BA8C0;margin-bottom:12px;letter-spacing:0.08em;text-transform:uppercase;}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 </head>
@@ -94,6 +116,7 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
     <button class="tab-btn" onclick="switchTab('risk')"><span class="tab-dot"></span>🗺️ Risk Discovery & Prioritization</button>
     <button class="tab-btn" onclick="switchTab('dashboard')"><span class="tab-dot"></span>📊 Risk Ops QA Dashboard</button>
     <button class="tab-btn" onclick="switchTab('monitoring')"><span class="tab-dot"></span>📋 Monthly Monitoring & Governance</button>
+    <button class="tab-btn" onclick="switchTab('appendix')"><span class="tab-dot"></span>📄 Appendix</button>
   </div>
 
   <div id="tab-intro" class="tab-content active">
@@ -1410,6 +1433,127 @@ body{background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
 
 </div><!-- end tab-monitoring -->
 
+<div id="tab-appendix" class="tab-content">
+
+  <div class="resume-appendix-label">Appendix — Resume</div>
+
+  <div class="resume-wrap">
+
+    <!-- Header -->
+    <div class="resume-name">ZI YE, CPA</div>
+    <div class="resume-contact">
+      San Leandro, CA
+      <span>•</span>
+      206-673-7486
+      <span>•</span>
+      zena19880831@gmail.com
+    </div>
+    <hr class="resume-divider">
+
+    <!-- Work Experience -->
+    <div class="resume-section">
+      <div class="resume-section-title">Work Experience</div>
+
+      <div class="resume-job">
+        <div class="resume-job-header">
+          <div class="resume-company">Intuit</div>
+          <div class="resume-dates">Oct. 2024 – Present</div>
+        </div>
+        <div class="resume-title">Senior Fraud and Risk Analyst</div>
+        <ul class="resume-bullets">
+          <li>Lead risk assessments for new product launches and AI-driven business initiatives, design and implement business process and SOX controls in partnership with Product, Risk Policy and Operations, Analytics, and Internal Audit.</li>
+          <li>Conduct end-to-end walkthroughs and testing of business process controls and ITGCs; assess design and operating effectiveness and drive remediation plans.</li>
+          <li>Establish issue management framework, lead remediation tracking, escalation and reporting.</li>
+          <li>Coordinate large-loss investigations, identify process gaps, and implement preventive control enhancements.</li>
+          <li>Establish third party management framework, develop risk matrix and vendor monitoring controls; leverage AI tools to enhance performance oversight.</li>
+          <li>Independently validate ML model performance to meet regulatory and bank compliance standards.</li>
+        </ul>
+      </div>
+
+      <div class="resume-job">
+        <div class="resume-job-header">
+          <div class="resume-company">Tencent Games</div>
+          <div class="resume-dates">Mar. 2023 – Oct. 2024</div>
+        </div>
+        <div class="resume-title">Internal Control Risk Manager</div>
+        <ul class="resume-bullets">
+          <li>Led global data-access risk assessments across 1,000+ system users (engineering, product, marketing, vendors) to mitigate data governance and compliance risk.</li>
+          <li>Performed risk assessments over $2B global marketing spend (NA, SEA, EU); redesigned approval workflows and strengthened control environment.</li>
+          <li>Implemented end-to-end process improvements to strengthen financial and operational controls across regions.</li>
+          <li>Built cross-functional training on overseas expense governance in partnership with Legal, Finance, and Procurement.</li>
+        </ul>
+      </div>
+
+      <div class="resume-job">
+        <div class="resume-job-header">
+          <div class="resume-company">Meta Platforms, Inc.</div>
+          <div class="resume-dates">Jul. 2020 – Jan. 2023</div>
+        </div>
+        <div class="resume-title">Sr. Internal Auditor</div>
+        <ul class="resume-bullets">
+          <li>Executed end-to-end audits including planning, fieldwork and reporting to assess the design and operating effectiveness of internal controls and processes for ads integrity and compliance.</li>
+          <li>Assessed control design and operating effectiveness, developed test plans, audit reports, and management action plans.</li>
+          <li>Presented audit findings to business owners and assisted in implementation of management action plans for various ads compliance initiatives.</li>
+          <li>Managed quarterly status update meetings with business partners to document, assess, and resolve open audit and compliance observations effectively and timely, and emerging risks and to scope potential audits.</li>
+          <li>Supervised contingent workforce performing data analytics and automated control testing.</li>
+        </ul>
+      </div>
+
+      <div class="resume-job">
+        <div class="resume-job-header">
+          <div class="resume-company">Uber Technologies, Inc.</div>
+          <div class="resume-dates">Apr. 2018 – Jul. 2020</div>
+        </div>
+        <div class="resume-title">Internal Auditor</div>
+        <ul class="resume-bullets">
+          <li>Designed and executed fares audit review program for surcharge and tolls, including scoping, identified areas of risks, lead walkthrough with respective stakeholders, designed testing procedures, performed substantive testing, obtained supporting tickets data to identify existing issues, process gaps, system limitation or design failure of internal system, communicated audit observations with stakeholders, and made recommendation for remediation.</li>
+          <li>Project management on fares review by holding status meetings with stakeholders, communicating tasks, assigning deadlines, tracking testing progress, escalating roadblocks to management, and preparing reporting deck.</li>
+          <li>Conducted SOX remediation validation as 3rd line of defense for various cycles, including financial reporting, revenue, HR, contingent workforce, and system access controls for IPO readiness.</li>
+        </ul>
+      </div>
+
+      <div class="resume-job">
+        <div class="resume-job-header">
+          <div class="resume-company">Deloitte &amp; Touché LLP</div>
+          <div class="resume-dates">Sept. 2015 – Apr. 2018</div>
+        </div>
+        <div class="resume-title">Audit Senior</div>
+        <ul class="resume-bullets">
+          <li>Executed financial statement audits and SOX testing for public technology clients.</li>
+          <li>Evaluated revenue recognition and internal controls under US GAAP; identified and remediated control deficiencies.</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="resume-divider">
+
+    <!-- Education -->
+    <div class="resume-section">
+      <div class="resume-section-title">Education</div>
+      <div class="resume-edu">
+        <div class="resume-edu-header">
+          <div class="resume-edu-school">Seattle University, Albers School of Business</div>
+          <div class="resume-edu-date">Dec. 2014</div>
+        </div>
+        <div class="resume-edu-degree">Master of Professional Accounting; Specialization in Business Valuation &nbsp;·&nbsp; Seattle, WA &nbsp;·&nbsp; Dean's List</div>
+      </div>
+    </div>
+
+    <hr class="resume-divider">
+
+    <!-- Skills -->
+    <div class="resume-section">
+      <div class="resume-section-title">Technical &amp; Other Skills</div>
+      <div class="resume-skills-text">
+        SOX / ICFR &nbsp;·&nbsp; Risk Assessments &nbsp;·&nbsp; Business Process Improvement &nbsp;·&nbsp; ITGC &nbsp;·&nbsp; AuditBoard &nbsp;·&nbsp; Workiva &nbsp;·&nbsp; SQL &nbsp;·&nbsp; Excel
+        <br>
+        Languages: Fluent in English and Mandarin
+      </div>
+    </div>
+
+  </div>
+</div><!-- end tab-appendix -->
+
 
 </div>
 
@@ -1418,8 +1562,9 @@ function switchTab(tab) {
   document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
   document.getElementById('tab-' + tab).classList.add('active');
-  event.target.classList.add('active');
+  event.target.closest('.tab-btn').classList.add('active');
   if (tab === 'dashboard') setTimeout(dbInitCharts, 50);
+  if (tab === 'dashboard') setTimeout(dbInitAllCharts, 100);
 }
 
 function dbSwitchLayer(id) {
